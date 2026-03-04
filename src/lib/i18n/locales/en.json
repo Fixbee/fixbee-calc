@@ -1,0 +1,178 @@
+{
+	"app": {
+		"name": "Fixbee"
+	},
+	"navigation": {
+		"valuation": "Valuation",
+		"history": "History",
+		"settings": "Settings",
+		"logout": "Log out"
+	},
+	"aria": {
+		"closeProfileModal": "Close account profile modal",
+		"closeNavigationMenu": "Close navigation menu",
+		"openNavigationMenu": "Open navigation menu",
+		"openAccountMenu": "Open account menu"
+	},
+	"common": {
+		"email": "Email",
+		"password": "Password",
+		"confirmPassword": "Confirm password",
+		"rememberMe": "Remember me",
+		"forgotPassword": "Forgot password?",
+		"requestAccess": "Request access",
+		"logIn": "Log in",
+		"sendLink": "Send link",
+		"goBack": "Go back",
+		"savePassword": "Save password",
+		"saveChanges": "Save changes",
+		"cancel": "Cancel",
+		"saving": "Saving...",
+		"next": "Next",
+		"back": "Back",
+		"accept": "Accept",
+		"decline": "Decline",
+		"yes": "Yes",
+		"no": "No",
+		"language": "Language",
+		"english": "English",
+		"polish": "Polish",
+		"search": "Search",
+		"model": "Model",
+		"color": "Color",
+		"imei": "IMEI",
+		"grade": "Grade",
+		"price": "Price",
+		"status": "Status",
+		"created": "Created"
+	},
+	"auth": {
+		"login": {
+			"title": "Welcome back",
+			"subtitle": "Log in to continue.",
+			"emailPlaceholder": "you@company.com",
+			"passwordPlaceholder": "Enter your password"
+		},
+		"forgotPassword": {
+			"title": "Reset password",
+			"subtitle": "Enter your account email and we will send a reset link.",
+			"emailPlaceholder": "you@company.com"
+		},
+		"updatePassword": {
+			"title": "Set new password",
+			"subtitle": "Use a strong password for your company account.",
+			"passwordPlaceholder": "At least 12 characters",
+			"confirmPasswordPlaceholder": "Repeat your new password"
+		}
+	},
+	"profile": {
+		"title": "Edit company profile",
+		"subtitle": "Update company name and avatar shown in the sidebar.",
+		"avatar": "Avatar",
+		"companyName": "Company name",
+		"companyAccount": "Company account",
+		"unknownEmail": "unknown"
+	},
+	"history": {
+		"statusAccepted": "ACCEPTED",
+		"statusRejected": "REJECTED",
+		"statusAbandoned": "ABANDONED"
+	},
+	"valuation": {
+		"timeline": {
+			"details": "Phone details",
+			"detailsShort": "Details",
+			"questionLong": "Question {index}",
+			"questionShort": "Q{index}",
+			"summary": "Summary",
+			"summaryShort": "Summary"
+		},
+		"tips": {
+			"button": "Show valuation tips",
+			"title": "Valuation tips",
+			"empty": "No tips available."
+		},
+		"details": {
+			"phoneModel": "Phone model",
+			"phoneModelPlaceholder": "Search phone model",
+			"phoneModelEmpty": "No phone models found.",
+			"color": "Color",
+			"colorPlaceholder": "e.g. Black",
+			"imei": "IMEI number",
+			"imeiPlaceholder": "15 digits",
+			"imeiUnreadable": "IMEI number is unreadable"
+		},
+		"questions": {
+			"powerOn": "Does the phone power on and display an image?",
+			"hasLock": "Does the phone have an iCloud / FMI / Google / Password / PIN / Huawei Lock / Mi Account lock?",
+			"hasVisibleDamage": "Does the phone have visible screen or housing damage?",
+			"allFunctionsWork": "Do all phone functions work?",
+			"cosmeticCondition": "Are the screen and housing scratched?",
+			"cosmeticNone": "No",
+			"cosmeticLight": "Light scratches",
+			"cosmeticHeavy": "Deep scratches or dents"
+		},
+		"summary": {
+			"title": "Proposed valuation",
+			"subtitle": "Review and confirm the calculated result.",
+			"grade": "Grade",
+			"price": "Proposed price"
+		},
+		"result": {
+			"acceptedTitle": "Valuation accepted",
+			"acceptedBody": "The result was saved successfully.",
+			"declinedTitle": "Valuation declined",
+			"declinedBody": "The result was saved as declined.",
+			"restart": "Starting a new valuation in a moment..."
+		},
+		"draftSaving": "Saving abandoned valuation draft..."
+	},
+	"messages": {
+		"resetEmailSent": "If an account exists for that email, a reset link has been sent. Check your inbox and spam folder.",
+		"valuationAcceptedSaved": "Valuation accepted and saved.",
+		"valuationDeclinedSaved": "Valuation marked as not accepted."
+	},
+	"errors": {
+		"emailRequired": "Email is required.",
+		"emailInvalid": "Enter a valid email address.",
+		"passwordRequired": "Password is required.",
+		"passwordMin": "Password must be at least 12 characters long.",
+		"confirmPasswordRequired": "Confirm your new password.",
+		"passwordsMismatch": "Passwords do not match.",
+		"invalidEmailPassword": "Invalid email or password.",
+		"resetEmailFailed": "Could not send the reset email. Try again in a minute.",
+		"passwordUpdateFailed": "Password update failed. Request a fresh recovery link and retry.",
+		"companyNameMin": "Company name must have at least 2 characters.",
+		"companyNameTooLong": "Company name is too long.",
+		"avatarInvalidType": "Use PNG, JPEG, WEBP, or AVIF.",
+		"avatarTooLarge": "Avatar file must be up to 5MB.",
+		"avatarUploadInvalid": "Avatar upload is invalid.",
+		"avatarUploadFailed": "Avatar upload failed.",
+		"avatarUploadFailedTryAgain": "Avatar upload failed. Try again.",
+		"avatarUploadCouldNotUpload": "Could not upload the file.",
+		"accountMissingEmail": "Account is missing an email address.",
+		"profileUpdateFailed": "Could not update account profile.",
+		"profileUpdateFailedTryAgain": "Could not update profile. Try again.",
+		"profileUpdateUnexpected": "Unexpected error while saving profile changes.",
+		"unauthorized": "Unauthorized.",
+		"unauthorizedSession": "Unauthorized session. Please log in again.",
+		"invalidPayload": "Invalid payload.",
+		"validationFix": "Fix validation errors and try again.",
+		"validationFixSubmit": "Fix validation errors and submit again.",
+		"onlyAcceptDecline": "Only accept or decline is allowed on the final step.",
+		"selectedModelUnavailable": "Selected phone model is unavailable.",
+		"pickAnotherModel": "Pick another phone model and try again.",
+		"valuationDraftNotFound": "Valuation draft was not found or is already finalized. Run valuation again.",
+		"imeiRequiredUnlessUnreadable": "IMEI is required unless marked unreadable.",
+		"imeiInvalid": "Enter a valid 15-digit IMEI number.",
+		"phoneModelRequired": "Select phone model.",
+		"phoneColorRequired": "Phone color is required.",
+		"phoneColorTooLong": "Phone color is too long.",
+		"imeiTooLong": "IMEI value is too long.",
+		"missingValuationAnswers": "Missing valuation answers. Review the previous step.",
+		"couldNotStoreDraft": "Could not store abandoned valuation draft.",
+		"unexpectedStoreDraft": "Unexpected error while storing abandoned valuation draft.",
+		"chooseAnswer": "Choose an answer before continuing.",
+		"couldNotContinue": "Could not continue. Try again."
+	}
+}

@@ -1,181 +1,237 @@
 @import 'tailwindcss';
 
 @font-face {
-	font-family: 'Geist Mono';
-	src: url('/fonts/GeistMono.woff2') format('woff2');
+	font-family: 'League Spartan';
+	src: url('../lib/assets/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
 	font-display: swap;
 	font-weight: 100 900;
 }
 
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../lib/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+	font-display: swap;
+	font-weight: 100 900;
+}
+
+:root {
+	--color-brand: oklch(0.8676 0.1736 90.37);
+	--color-canvas: oklch(0.75 0 0);
+	--color-surface: oklch(0.89 0 0 / 0.85);
+	--color-sidebar: oklch(0.8699 0 0);
+	--color-foreground: oklch(0.19 0 0);
+	--color-foreground-muted: oklch(0.31 0 0 / 0.8);
+	--color-border: oklch(0 0 0 / 0.18);
+	--color-border-strong: oklch(0 0 0 / 0.3);
+	--color-focus: oklch(0.52 0 0);
+	--color-accent: oklch(0.24 0 0);
+	--color-accent-foreground: oklch(0.97 0 0);
+	--color-input: oklch(0.89 0 0 / 0.92);
+	--color-input-secondary: oklch(0.84 0 0 / 0.92);
+	--color-input-foreground: oklch(0.19 0 0);
+	--color-glow: oklch(1 0 0 / 0.2);
+
+	--color-button-background: oklch(0.77 0 0 / 0.95);
+	--color-button-foreground: oklch(0.2 0 0 / 0.83);
+	--color-button-text-shadow: oklch(1 0 0 / 0.2);
+	--color-button-top-light: oklch(1 0 0 / 0.2);
+	--color-button-top-light-hover: oklch(1 0 0 / 0.3);
+	--color-button-inner-stroke: oklch(1 0 0 / 0.04);
+	--color-button-outer-stroke: oklch(0 0 0 / 0.15);
+	--color-button-shadow-1: oklch(0 0 0 / 0.01);
+	--color-button-shadow-2: oklch(0 0 0 / 0.05);
+	--color-button-shadow-3: oklch(0 0 0 / 0.17);
+	--color-button-shadow-4: oklch(0 0 0 / 0.29);
+	--color-button-shadow-5: oklch(0 0 0 / 0.33);
+	--color-button-border-top: oklch(1 0 0 / 0.75);
+	--color-button-border-mid: oklch(0 0 0 / 0.25);
+	--color-button-border-low: oklch(0 0 0 / 0.25);
+	--color-button-border-bottom: oklch(1 0 0 / 0.35);
+
+	--color-button-secondary-background: oklch(0 0 0 / 0.1);
+	--color-button-secondary-background-hover: oklch(0 0 0 / 0.025);
+	--color-button-secondary-foreground: oklch(0.2 0 0 / 0.83);
+	--color-button-secondary-text-shadow: oklch(1 0 0 / 0.2);
+	--color-button-secondary-top-light: oklch(1 0 0 / 0.18);
+	--color-button-secondary-top-light-hover: oklch(1 0 0 / 0.28);
+	--color-button-secondary-inner-stroke: oklch(1 0 0 / 0.03);
+	--color-button-secondary-outer-stroke: oklch(0 0 0 / 0.24);
+	--color-button-secondary-border-top: oklch(1 0 0 / 0.42);
+	--color-button-secondary-border-mid: oklch(0 0 0 / 0.2);
+	--color-button-secondary-border-bottom: oklch(1 0 0 / 0.22);
+
+	--color-button-success-background: oklch(0.71 0.15 149 / 0.95);
+	--color-button-success-background-hover: oklch(0.75 0.15 149 / 0.25);
+	--color-button-success-foreground: oklch(0.99 0.01 152 / 0.98);
+	--color-button-success-text-shadow: oklch(0 0 0 / 0.2);
+	--color-button-success-top-light: oklch(1 0 0 / 0.18);
+	--color-button-success-top-light-hover: oklch(1 0 0 / 0.28);
+	--color-button-success-inner-stroke: oklch(1 0 0 / 0.05);
+	--color-button-success-outer-stroke: oklch(0.36 0.09 150 / 0.35);
+	--color-button-success-shadow-1: oklch(0 0 0 / 0.01);
+	--color-button-success-shadow-2: oklch(0 0 0 / 0.05);
+	--color-button-success-shadow-3: oklch(0 0 0 / 0.17);
+	--color-button-success-shadow-4: oklch(0 0 0 / 0.29);
+	--color-button-success-shadow-5: oklch(0 0 0 / 0.33);
+	--color-button-success-border-top: oklch(0.9 0 148 / 0.7);
+	--color-button-success-border-mid: oklch(0.41 0.1 148 / 0.4);
+	--color-button-success-border-low: oklch(0.35 0.1 148 / 0.35);
+	--color-button-success-border-bottom: oklch(1 0 0 / 0.35);
+
+	--color-button-destructive-background: oklch(0.69 0.18 30 / 0.12);
+	--color-button-destructive-background-hover: oklch(0.67 0.2 30 / 0.12);
+	--color-button-destructive-foreground: oklch(0.44 0.2 27 / 0.96);
+	--color-button-destructive-text-shadow: oklch(1 0 0 / 0.26);
+	--color-button-destructive-inner-stroke: oklch(1 0 0 / 0.03);
+	--color-button-destructive-outer-stroke: oklch(0.5 0.17 27 / 0.38);
+	--color-button-destructive-border-top: oklch(1 0 0 / 0.5);
+	--color-button-destructive-border-mid: oklch(0.5 0.18 27 / 0.4);
+	--color-button-destructive-border-bottom: oklch(1 0 0 / 0.2);
+	--color-button-ghost-foreground: oklch(0.2 0 0 / 0.9);
+	--color-button-ghost-background-hover: oklch(0 0 0 / 0.08);
+	--color-button-ghost-background-active: oklch(0 0 0 / 0.14);
+
+	--color-card-shadow-inner: oklch(1 0 0 / 0.04);
+	--color-card-shadow-outline: oklch(0 0 0 / 0.05);
+	--color-card-shadow-drop: oklch(0 0 0 / 0.32);
+	--color-card-border-start: oklch(1 0 0 / 0.77);
+	--color-card-border-mid: oklch(1 0 0 / 0.2);
+	--color-card-border-soft: oklch(1 0 0 / 0.2);
+	--color-card-border-end: oklch(1 0 0 / 0.3);
+	--color-title: oklch(0.19 0 0 / 0.9);
+	--color-title-shadow: oklch(1 0 0 / 0.2);
+	--color-label: oklch(0.22 0 0 / 0.8);
+	--color-link: oklch(0.2 0 0 / 0.86);
+	--color-link-hover: oklch(0.12 0 0 / 0.98);
+	--color-success: oklch(0.55 0.22 148);
+	--color-destructive: oklch(0.55 0.22 27);
+}
+
 @theme {
-	--font-display: 'Geist', 'Inter', 'Segoe UI', sans-serif;
-	--font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+	--font-heading: 'League Spartan', 'Segoe UI', sans-serif;
+	--font-body: 'Montserrat', 'Segoe UI', sans-serif;
 
-	--color-auth-canvas: oklch(0.165 0 0);
-	--color-auth-surface: oklch(0.225 0 0 / 0.8);
-	--color-auth-surface-solid: oklch(0.235 0 0);
-	--color-auth-foreground: oklch(0.91 0 0);
-	--color-auth-foreground-muted: oklch(0.67 0 0);
-	--color-auth-border: oklch(0.98 0 0 / 0.18);
-	--color-auth-border-strong: oklch(0.98 0 0 / 0.34);
-	--color-auth-focus: oklch(0.9 0 0);
-	--color-auth-accent: oklch(0.78 0 0);
-	--color-auth-accent-foreground: oklch(0.23 0 0);
-	--color-auth-input: oklch(0.19 0 0 / 0.86);
-	--color-auth-input-secondary: oklch(0.29 0 0 / 0.9);
-	--color-auth-input-foreground: oklch(0.9 0 0);
-	--color-auth-glow: oklch(0.95 0 0 / 0.08);
+	--color-brand: var(--color-brand);
+	--color-canvas: var(--color-canvas);
+	--color-surface: var(--color-surface);
+	--color-sidebar: var(--color-sidebar);
+	--color-foreground: var(--color-foreground);
+	--color-foreground-muted: var(--color-foreground-muted);
+	--color-border: var(--color-border);
+	--color-border-strong: var(--color-border-strong);
+	--color-focus: var(--color-focus);
+	--color-accent: var(--color-accent);
+	--color-accent-foreground: var(--color-accent-foreground);
+	--color-input: var(--color-input);
+	--color-input-secondary: var(--color-input-secondary);
+	--color-input-foreground: var(--color-input-foreground);
+	--color-glow: var(--color-glow);
 
-	--color-auth-button-background: oklch(0.285 0 0 / 0.9);
-	--color-auth-button-foreground: oklch(0.9 0 0 / 0.83);
-	--color-auth-button-text-shadow: oklch(0 0 0 / 0.5);
-	--color-auth-button-top-light: oklch(1 0 0 / 0.08);
-	--color-auth-button-top-light-hover: oklch(1 0 0 / 0.14);
-	--color-auth-button-inner-stroke: oklch(1 0 0 / 0.04);
-	--color-auth-button-outer-stroke: oklch(0 0 0 / 0.45);
-	--color-auth-button-shadow-1: oklch(0 0 0 / 0.01);
-	--color-auth-button-shadow-2: oklch(0 0 0 / 0.025);
-	--color-auth-button-shadow-3: oklch(0 0 0 / 0.1);
-	--color-auth-button-shadow-4: oklch(0 0 0 / 0.15);
-	--color-auth-button-shadow-5: oklch(0 0 0 / 0.25);
-	--color-auth-button-border-top: oklch(0.98 0 0 / 0.75);
-	--color-auth-button-border-mid: oklch(0.13 0 0 / 0.48);
-	--color-auth-button-border-low: oklch(0.21 0 0 / 0.26);
-	--color-auth-button-border-bottom: oklch(0.98 0 0 / 0.25);
+	--color-button-background: var(--color-button-background);
+	--color-button-foreground: var(--color-button-foreground);
+	--color-button-text-shadow: var(--color-button-text-shadow);
+	--color-button-top-light: var(--color-button-top-light);
+	--color-button-top-light-hover: var(--color-button-top-light-hover);
+	--color-button-inner-stroke: var(--color-button-inner-stroke);
+	--color-button-outer-stroke: var(--color-button-outer-stroke);
+	--color-button-shadow-1: var(--color-button-shadow-1);
+	--color-button-shadow-2: var(--color-button-shadow-2);
+	--color-button-shadow-3: var(--color-button-shadow-3);
+	--color-button-shadow-4: var(--color-button-shadow-4);
+	--color-button-shadow-5: var(--color-button-shadow-5);
+	--color-button-border-top: var(--color-button-border-top);
+	--color-button-border-mid: var(--color-button-border-mid);
+	--color-button-border-low: var(--color-button-border-low);
+	--color-button-border-bottom: var(--color-button-border-bottom);
 
-	--color-auth-button-secondary-background: oklch(0.07 0 0 / 0.62);
-	--color-auth-button-secondary-background-hover: oklch(0.09 0 0 / 0.7);
-	--color-auth-button-secondary-foreground: oklch(0.9 0 0 / 0.82);
-	--color-auth-button-secondary-text-shadow: oklch(0 0 0 / 0.22);
-	--color-auth-button-secondary-top-light: oklch(1 0 0 / 0.06);
-	--color-auth-button-secondary-top-light-hover: oklch(1 0 0 / 0.1);
-	--color-auth-button-secondary-inner-stroke: oklch(1 0 0 / 0.03);
-	--color-auth-button-secondary-outer-stroke: oklch(0 0 0 / 0.55);
-	--color-auth-button-secondary-border-top: oklch(0.98 0 0 / 0.23);
-	--color-auth-button-secondary-border-mid: oklch(0.14 0 0 / 0.35);
-	--color-auth-button-secondary-border-bottom: oklch(0.98 0 0 / 0.16);
+	--color-button-secondary-background: var(--color-button-secondary-background);
+	--color-button-secondary-background-hover: var(--color-button-secondary-background-hover);
+	--color-button-secondary-foreground: var(--color-button-secondary-foreground);
+	--color-button-secondary-text-shadow: var(--color-button-secondary-text-shadow);
+	--color-button-secondary-top-light: var(--color-button-secondary-top-light);
+	--color-button-secondary-top-light-hover: var(--color-button-secondary-top-light-hover);
+	--color-button-secondary-inner-stroke: var(--color-button-secondary-inner-stroke);
+	--color-button-secondary-outer-stroke: var(--color-button-secondary-outer-stroke);
+	--color-button-secondary-border-top: var(--color-button-secondary-border-top);
+	--color-button-secondary-border-mid: var(--color-button-secondary-border-mid);
+	--color-button-secondary-border-bottom: var(--color-button-secondary-border-bottom);
+
+	--color-button-success-background: var(--color-button-success-background);
+	--color-button-success-background-hover: var(--color-button-success-background-hover);
+	--color-button-success-foreground: var(--color-button-success-foreground);
+	--color-button-success-text-shadow: var(--color-button-success-text-shadow);
+	--color-button-success-top-light: var(--color-button-success-top-light);
+	--color-button-success-top-light-hover: var(--color-button-success-top-light-hover);
+	--color-button-success-inner-stroke: var(--color-button-success-inner-stroke);
+	--color-button-success-outer-stroke: var(--color-button-success-outer-stroke);
+	--color-button-success-shadow-1: var(--color-button-success-shadow-1);
+	--color-button-success-shadow-2: var(--color-button-success-shadow-2);
+	--color-button-success-shadow-3: var(--color-button-success-shadow-3);
+	--color-button-success-shadow-4: var(--color-button-success-shadow-4);
+	--color-button-success-shadow-5: var(--color-button-success-shadow-5);
+	--color-button-success-border-top: var(--color-button-success-border-top);
+	--color-button-success-border-mid: var(--color-button-success-border-mid);
+	--color-button-success-border-low: var(--color-button-success-border-low);
+	--color-button-success-border-bottom: var(--color-button-success-border-bottom);
+
+	--color-button-destructive-background: var(--color-button-destructive-background);
+	--color-button-destructive-background-hover: var(--color-button-destructive-background-hover);
+	--color-button-destructive-foreground: var(--color-button-destructive-foreground);
+	--color-button-destructive-text-shadow: var(--color-button-destructive-text-shadow);
+	--color-button-destructive-inner-stroke: var(--color-button-destructive-inner-stroke);
+	--color-button-destructive-outer-stroke: var(--color-button-destructive-outer-stroke);
+	--color-button-destructive-border-top: var(--color-button-destructive-border-top);
+	--color-button-destructive-border-mid: var(--color-button-destructive-border-mid);
+	--color-button-destructive-border-bottom: var(--color-button-destructive-border-bottom);
+	--color-button-ghost-foreground: var(--color-button-ghost-foreground);
+	--color-button-ghost-background-hover: var(--color-button-ghost-background-hover);
+	--color-button-ghost-background-active: var(--color-button-ghost-background-active);
+
+	--color-card-shadow-inner: var(--color-card-shadow-inner);
+	--color-card-shadow-outline: var(--color-card-shadow-outline);
+	--color-card-shadow-drop: var(--color-card-shadow-drop);
+	--color-card-border-start: var(--color-card-border-start);
+	--color-card-border-mid: var(--color-card-border-mid);
+	--color-card-border-soft: var(--color-card-border-soft);
+	--color-card-border-end: var(--color-card-border-end);
+	--color-title: var(--color-title);
+	--color-title-shadow: var(--color-title-shadow);
+	--color-label: var(--color-label);
+	--color-link: var(--color-link);
+	--color-link-hover: var(--color-link-hover);
+	--color-destructive: var(--color-destructive);
+	--color-success: var(--color-success);
 }
 
 @layer base {
 	:root {
-		color-scheme: dark;
+		color-scheme: light;
 	}
 
 	*,
 	*::before,
 	*::after {
 		box-sizing: border-box;
-		border-color: var(--color-auth-border);
+		border-color: var(--color-border);
 	}
 
 	body {
 		min-height: 100dvh;
-		font-family: var(--font-mono);
-		font-size: 0.8125rem;
+		font-family: var(--font-body);
+		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--color-auth-foreground);
-		background-color: var(--color-auth-canvas);
+		color: var(--color-foreground);
+		background-color: var(--color-canvas);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
-}
 
-@layer components {
-	.auth-shell {
-		position: relative;
-		isolation: isolate;
-		min-height: 100dvh;
-		overflow: hidden;
-		background: var(--color-auth-canvas);
-	}
-
-	.auth-stage {
-		position: relative;
-		z-index: 3;
-		display: flex;
-		min-height: 100dvh;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem 1rem;
-	}
-
-	.auth-card {
-		position: relative;
-		width: 100%;
-		max-width: 27.75rem;
-		border-radius: 1.5rem;
-		background: var(--color-auth-surface);
-		backdrop-filter: blur(20px);
-		padding: 1.5rem;
-		box-shadow:
-			inset 0 0 0 1px oklch(1 0 0 / 0.04),
-			0 0 0 1px oklch(0 0 0 / 0.42),
-			0 10px 28px -14px oklch(0 0 0 / 0.78);
-	}
-
-	.auth-card::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: inherit;
-		border: 1.25px solid transparent;
-		pointer-events: none;
-		background: linear-gradient(
-				160deg,
-				oklch(0.98 0 0 / 0.45),
-				oklch(0.98 0 0 / 0.08) 40%,
-				oklch(0.98 0 0 / 0.18) 72%,
-				oklch(0.98 0 0 / 0.3)
-			)
-			border-box;
-		mask:
-			linear-gradient(black, black) padding-box,
-			linear-gradient(black, black);
-		mask-composite: exclude;
-	}
-
-	.auth-divider {
-		height: 1px;
-		background: linear-gradient(to right, transparent, oklch(0.98 0 0 / 0.18), transparent);
-	}
-
-	.auth-title {
-		font-family: var(--font-display);
-		font-size: 1.25rem;
-		font-weight: 400;
-		letter-spacing: -0.025em;
-		line-height: 1.2;
-		color: oklch(0.95 0 0);
-		text-shadow: 0 1px 0 oklch(1 0 0 / 0.18);
-	}
-
-	.auth-subtitle {
-		color: var(--color-auth-foreground-muted);
-		font-weight: 500;
-		font-size: 0.8125rem;
-		line-height: 1.4;
-	}
-
-	.auth-label {
-		display: inline-block;
-		margin-bottom: 0.35rem;
-		color: oklch(0.83 0 0);
-		user-select: none;
-	}
-
-	.auth-footnote {
-		color: var(--color-auth-foreground-muted);
-		font-size: 0.75rem;
-	}
-
-	.auth-link {
-		color: oklch(0.89 0 0);
-		text-decoration: underline;
-		text-underline-offset: 3px;
-		transition: color 180ms ease;
-	}
-
-	.auth-link:hover {
-		color: oklch(0.96 0 0);
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
 	}
 }

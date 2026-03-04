@@ -1,0 +1,48 @@
+{
+	"version": "7",
+	"dialect": "postgresql",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "7",
+			"when": 1771953765245,
+			"tag": "0000_uneven_moonstone",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "7",
+			"when": 1771968334629,
+			"tag": "0001_nasty_the_watchers",
+			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "7",
+			"when": 1772046217065,
+			"tag": "0002_new_darwin",
+			"breakpoints": true
+		},
+		{
+			"idx": 3,
+			"version": "7",
+			"when": 1772064515000,
+			"tag": "0003_sudden_phone_pricing",
+			"breakpoints": true
+		},
+		{
+			"idx": 4,
+			"version": "7",
+			"when": 1772390000000,
+			"tag": "0004_valuation_help_tips",
+			"breakpoints": true
+		},
+		{
+			"idx": 4,
+			"version": "7",
+			"when": 1772790000000,
+			"tag": "0005_i18n_valuation_help_tips",
+			"breakpoints": true
+		}
+	]
+}

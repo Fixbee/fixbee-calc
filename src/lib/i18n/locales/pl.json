@@ -1,0 +1,178 @@
+{
+	"app": {
+		"name": "Fixbee"
+	},
+	"navigation": {
+		"valuation": "Wycena",
+		"history": "Historia",
+		"settings": "Ustawienia",
+		"logout": "Wyloguj"
+	},
+	"aria": {
+		"closeProfileModal": "Zamknij okno profilu konta",
+		"closeNavigationMenu": "Zamknij menu nawigacji",
+		"openNavigationMenu": "Otwórz menu nawigacji",
+		"openAccountMenu": "Otwórz menu konta"
+	},
+	"common": {
+		"email": "Email",
+		"password": "Hasło",
+		"confirmPassword": "Potwierdź hasło",
+		"rememberMe": "Zapamiętaj mnie",
+		"forgotPassword": "Nie pamiętasz hasła?",
+		"requestAccess": "Poproś o dostęp",
+		"logIn": "Zaloguj się",
+		"sendLink": "Wyślij link",
+		"goBack": "Wróć",
+		"savePassword": "Zapisz hasło",
+		"saveChanges": "Zapisz zmiany",
+		"cancel": "Anuluj",
+		"saving": "Zapisywanie...",
+		"next": "Dalej",
+		"back": "Wstecz",
+		"accept": "Akceptuj",
+		"decline": "Odrzuć",
+		"yes": "Tak",
+		"no": "Nie",
+		"language": "Język",
+		"english": "Angielski",
+		"polish": "Polski",
+		"search": "Szukaj",
+		"model": "Model",
+		"color": "Kolor",
+		"imei": "IMEI",
+		"grade": "Klasa",
+		"price": "Cena",
+		"status": "Status",
+		"created": "Utworzono"
+	},
+	"auth": {
+		"login": {
+			"title": "Witaj ponownie",
+			"subtitle": "Zaloguj się, aby kontynuować.",
+			"emailPlaceholder": "ty@firma.com",
+			"passwordPlaceholder": "Wpisz hasło"
+		},
+		"forgotPassword": {
+			"title": "Reset hasła",
+			"subtitle": "Podaj adres e-mail konta, a wyślemy link resetujący.",
+			"emailPlaceholder": "ty@firma.com"
+		},
+		"updatePassword": {
+			"title": "Ustaw nowe hasło",
+			"subtitle": "Użyj silnego hasła dla konta firmowego.",
+			"passwordPlaceholder": "Co najmniej 12 znaków",
+			"confirmPasswordPlaceholder": "Powtórz nowe hasło"
+		}
+	},
+	"profile": {
+		"title": "Edytuj profil firmy",
+		"subtitle": "Zaktualizuj nazwę firmy i avatar widoczny w panelu.",
+		"avatar": "Avatar",
+		"companyName": "Nazwa firmy",
+		"companyAccount": "Konto firmowe",
+		"unknownEmail": "nieznany"
+	},
+	"history": {
+		"statusAccepted": "ZAAKCEPTOWANA",
+		"statusRejected": "ODRZUCONA",
+		"statusAbandoned": "PORZUCONA"
+	},
+	"valuation": {
+		"timeline": {
+			"details": "Dane telefonu",
+			"detailsShort": "Dane",
+			"questionLong": "Pytanie {index}",
+			"questionShort": "P{index}",
+			"summary": "Podsumowanie",
+			"summaryShort": "Podsumowanie"
+		},
+		"tips": {
+			"button": "Pokaż wskazówki wyceny",
+			"title": "Wskazówki wyceny",
+			"empty": "Brak dostępnych wskazówek."
+		},
+		"details": {
+			"phoneModel": "Model telefonu",
+			"phoneModelPlaceholder": "Wyszukaj model telefonu",
+			"phoneModelEmpty": "Nie znaleziono modeli telefonu.",
+			"color": "Kolor",
+			"colorPlaceholder": "np. Czarny",
+			"imei": "Numer IMEI",
+			"imeiPlaceholder": "15 cyfr",
+			"imeiUnreadable": "Numer IMEI jest nieczytelny"
+		},
+		"questions": {
+			"powerOn": "Czy telefon się włącza i wyświetla obraz?",
+			"hasLock": "Czy telefon ma blokadę iCloud / FMI / Google / hasło / PIN / Huawei Lock / Mi Account?",
+			"hasVisibleDamage": "Czy telefon ma widoczne uszkodzenia ekranu lub obudowy?",
+			"allFunctionsWork": "Czy wszystkie funkcje telefonu działają?",
+			"cosmeticCondition": "Czy ekran i obudowa są porysowane?",
+			"cosmeticNone": "Nie",
+			"cosmeticLight": "Lekkie rysy",
+			"cosmeticHeavy": "Głębokie rysy lub wgniecenia"
+		},
+		"summary": {
+			"title": "Proponowana wycena",
+			"subtitle": "Sprawdź i potwierdź obliczony wynik.",
+			"grade": "Klasa",
+			"price": "Proponowana cena"
+		},
+		"result": {
+			"acceptedTitle": "Wycena zaakceptowana",
+			"acceptedBody": "Wynik został zapisany pomyślnie.",
+			"declinedTitle": "Wycena odrzucona",
+			"declinedBody": "Wynik został zapisany jako odrzucony.",
+			"restart": "Za chwilę rozpocznie się nowa wycena..."
+		},
+		"draftSaving": "Zapisywanie porzuconego szkicu wyceny..."
+	},
+	"messages": {
+		"resetEmailSent": "Jeśli konto istnieje dla tego adresu, wysłano link resetujący. Sprawdź skrzynkę i spam.",
+		"valuationAcceptedSaved": "Wycena zaakceptowana i zapisana.",
+		"valuationDeclinedSaved": "Wycena oznaczona jako niezaakceptowana."
+	},
+	"errors": {
+		"emailRequired": "Email jest wymagany.",
+		"emailInvalid": "Wpisz poprawny adres email.",
+		"passwordRequired": "Hasło jest wymagane.",
+		"passwordMin": "Hasło musi mieć co najmniej 12 znaków.",
+		"confirmPasswordRequired": "Potwierdź nowe hasło.",
+		"passwordsMismatch": "Hasła nie są takie same.",
+		"invalidEmailPassword": "Nieprawidłowy email lub hasło.",
+		"resetEmailFailed": "Nie udało się wysłać maila resetującego. Spróbuj ponownie za minutę.",
+		"passwordUpdateFailed": "Aktualizacja hasła nie powiodła się. Poproś o nowy link i spróbuj ponownie.",
+		"companyNameMin": "Nazwa firmy musi mieć co najmniej 2 znaki.",
+		"companyNameTooLong": "Nazwa firmy jest zbyt długa.",
+		"avatarInvalidType": "Użyj PNG, JPEG, WEBP lub AVIF.",
+		"avatarTooLarge": "Plik avatara może mieć maksymalnie 5MB.",
+		"avatarUploadInvalid": "Przesłanie avatara jest nieprawidłowe.",
+		"avatarUploadFailed": "Przesłanie avatara nie powiodło się.",
+		"avatarUploadFailedTryAgain": "Przesłanie avatara nie powiodło się. Spróbuj ponownie.",
+		"avatarUploadCouldNotUpload": "Nie udało się przesłać pliku.",
+		"accountMissingEmail": "Konto nie ma adresu e-mail.",
+		"profileUpdateFailed": "Nie udało się zaktualizować profilu konta.",
+		"profileUpdateFailedTryAgain": "Nie udało się zaktualizować profilu. Spróbuj ponownie.",
+		"profileUpdateUnexpected": "Nieoczekiwany błąd podczas zapisywania zmian profilu.",
+		"unauthorized": "Brak autoryzacji.",
+		"unauthorizedSession": "Nieautoryzowana sesja. Zaloguj się ponownie.",
+		"invalidPayload": "Nieprawidłowe dane wejściowe.",
+		"validationFix": "Popraw błędy walidacji i spróbuj ponownie.",
+		"validationFixSubmit": "Popraw błędy walidacji i wyślij ponownie.",
+		"onlyAcceptDecline": "Na ostatnim kroku można tylko zaakceptować lub odrzucić.",
+		"selectedModelUnavailable": "Wybrany model telefonu jest niedostępny.",
+		"pickAnotherModel": "Wybierz inny model telefonu i spróbuj ponownie.",
+		"valuationDraftNotFound": "Szkic wyceny nie został znaleziony lub został już zakończony. Uruchom wycenę ponownie.",
+		"imeiRequiredUnlessUnreadable": "IMEI jest wymagany, jeśli nie jest oznaczony jako nieczytelny.",
+		"imeiInvalid": "Wpisz poprawny 15‑cyfrowy numer IMEI.",
+		"phoneModelRequired": "Wybierz model telefonu.",
+		"phoneColorRequired": "Kolor telefonu jest wymagany.",
+		"phoneColorTooLong": "Kolor telefonu jest zbyt długi.",
+		"imeiTooLong": "Wartość IMEI jest zbyt długa.",
+		"missingValuationAnswers": "Brakuje odpowiedzi z wyceny. Sprawdź poprzedni krok.",
+		"couldNotStoreDraft": "Nie udało się zapisać porzuconego szkicu wyceny.",
+		"unexpectedStoreDraft": "Nieoczekiwany błąd podczas zapisywania porzuconego szkicu wyceny.",
+		"chooseAnswer": "Wybierz odpowiedź przed kontynuacją.",
+		"couldNotContinue": "Nie można kontynuować. Spróbuj ponownie."
+	}
+}

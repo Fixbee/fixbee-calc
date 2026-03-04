@@ -1,0 +1,327 @@
+{
+	"id": "6c19e79f-768a-4b25-aad9-68ec16091528",
+	"prevId": "536f7819-3a7c-4d03-8181-0e31f1d99f56",
+	"version": "7",
+	"dialect": "postgresql",
+	"tables": {
+		"public.phone_models": {
+			"name": "phone_models",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"model": {
+					"name": "model",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"price_a": {
+					"name": "price_a",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"price_b": {
+					"name": "price_b",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"price_c": {
+					"name": "price_c",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"price_d": {
+					"name": "price_d",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {
+				"phone_models_model_unique": {
+					"name": "phone_models_model_unique",
+					"nullsNotDistinct": false,
+					"columns": ["model"]
+				}
+			},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.users": {
+			"name": "users",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"email": {
+					"name": "email",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"company_name": {
+					"name": "company_name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"avatar_url": {
+					"name": "avatar_url",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.valuations": {
+			"name": "valuations",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"phone_model_id": {
+					"name": "phone_model_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"phone_color": {
+					"name": "phone_color",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"imei": {
+					"name": "imei",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"imei_unreadable": {
+					"name": "imei_unreadable",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true,
+					"default": false
+				},
+				"powers_on_and_displays_image": {
+					"name": "powers_on_and_displays_image",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"has_lock": {
+					"name": "has_lock",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"has_visible_damage": {
+					"name": "has_visible_damage",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"all_functions_work": {
+					"name": "all_functions_work",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"cosmetic_condition": {
+					"name": "cosmetic_condition",
+					"type": "phone_cosmetic_condition",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"grade": {
+					"name": "grade",
+					"type": "valuation_grade",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"proposed_price": {
+					"name": "proposed_price",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"status": {
+					"name": "status",
+					"type": "valuation_status",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {
+				"valuations_user_id_created_at_idx": {
+					"name": "valuations_user_id_created_at_idx",
+					"columns": [
+						{
+							"expression": "user_id",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						},
+						{
+							"expression": "created_at",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						}
+					],
+					"isUnique": false,
+					"concurrently": false,
+					"method": "btree",
+					"with": {}
+				},
+				"valuations_status_idx": {
+					"name": "valuations_status_idx",
+					"columns": [
+						{
+							"expression": "status",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						}
+					],
+					"isUnique": false,
+					"concurrently": false,
+					"method": "btree",
+					"with": {}
+				}
+			},
+			"foreignKeys": {
+				"valuations_user_id_users_id_fk": {
+					"name": "valuations_user_id_users_id_fk",
+					"tableFrom": "valuations",
+					"tableTo": "users",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "cascade",
+					"onUpdate": "no action"
+				},
+				"valuations_phone_model_id_phone_models_id_fk": {
+					"name": "valuations_phone_model_id_phone_models_id_fk",
+					"tableFrom": "valuations",
+					"tableTo": "phone_models",
+					"columnsFrom": ["phone_model_id"],
+					"columnsTo": ["id"],
+					"onDelete": "restrict",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		}
+	},
+	"enums": {
+		"public.phone_cosmetic_condition": {
+			"name": "phone_cosmetic_condition",
+			"schema": "public",
+			"values": ["none", "light", "heavy"]
+		},
+		"public.valuation_grade": {
+			"name": "valuation_grade",
+			"schema": "public",
+			"values": ["A", "B", "C", "D"]
+		},
+		"public.valuation_status": {
+			"name": "valuation_status",
+			"schema": "public",
+			"values": ["accepted", "rejected", "abandoned"]
+		}
+	},
+	"schemas": {},
+	"sequences": {},
+	"roles": {},
+	"policies": {},
+	"views": {},
+	"_meta": {
+		"columns": {},
+		"schemas": {},
+		"tables": {}
+	}
+}
