@@ -1,4 +1,4 @@
-import { db } from '$lib/server/db/client';
+import { closeDbClient, createDbClient } from '$lib/server/db/client';
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
@@ -9,12 +9,18 @@ export const load: LayoutServerLoad = async ({ locals }) => {
 		throw redirect(302, '/login');
 	}
 
-	const profile = await db.query.users.findFirst({
-		where: (table, { eq }) => eq(table.id, user.id)
-	});
+	const { db, sql } = createDbClient();
 
-	return {
-		user,
-		profile: profile ?? null
-	};
+	try {
+		const profile = await db.query.users.findFirst({
+			where: (table, { eq }) => eq(table.id, user.id)
+		});
+
+		return {
+			user,
+			profile: profile ?? null
+		};
+	} finally {
+		await closeDbClient(sql);
+	}
 };

@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { db } from '$lib/server/db/client';
+import { closeDbClient, createDbClient } from '$lib/server/db/client';
 import { phoneModels, valuations } from '$lib/server/db/schema';
 import { computeValuationGrade, getPriceForGrade } from '$lib/valuation/grading';
 import { valuationSubmissionSchema } from '$lib/valuation/schema';
@@ -51,72 +51,78 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		);
 	}
 
-	const model = await db
-		.select({
-			id: phoneModels.id,
-			basePrice: phoneModels.basePrice,
-			gradeAPercent: phoneModels.gradeAPercent,
-			gradeBPercent: phoneModels.gradeBPercent,
-			gradeCPercent: phoneModels.gradeCPercent,
-			gradeDPercent: phoneModels.gradeDPercent
-		})
-		.from(phoneModels)
-		.where(eq(phoneModels.id, parsedData.data.phoneModelId))
-		.limit(1)
-		.then((rows) => rows[0] ?? null);
+	const { db, sql } = createDbClient();
 
-	if (!model) {
-		return json(
+	try {
+		const model = await db
+			.select({
+				id: phoneModels.id,
+				basePrice: phoneModels.basePrice,
+				gradeAPercent: phoneModels.gradeAPercent,
+				gradeBPercent: phoneModels.gradeBPercent,
+				gradeCPercent: phoneModels.gradeCPercent,
+				gradeDPercent: phoneModels.gradeDPercent
+			})
+			.from(phoneModels)
+			.where(eq(phoneModels.id, parsedData.data.phoneModelId))
+			.limit(1)
+			.then((rows) => rows[0] ?? null);
+
+		if (!model) {
+			return json(
+				{
+					message: 'errors.selectedModelUnavailable'
+				},
+				{ status: 400 }
+			);
+		}
+
+		const answers = {
+			powersOnAndDisplaysImage: parsedData.data.questionPowerOn === 'yes',
+			hasLock: parsedData.data.questionHasLock === 'yes',
+			hasVisibleDamage: parsedData.data.questionHasVisibleDamage === 'yes',
+			allFunctionsWork: parsedData.data.questionAllFunctionsWork === 'yes',
+			cosmeticCondition: parsedData.data.questionCosmeticCondition
+		};
+		const grade = computeValuationGrade(answers);
+		const proposedPrice = getPriceForGrade(
+			model.basePrice,
 			{
-				message: 'errors.selectedModelUnavailable'
+				A: model.gradeAPercent,
+				B: model.gradeBPercent,
+				C: model.gradeCPercent,
+				D: model.gradeDPercent
 			},
-			{ status: 400 }
+			grade
 		);
-	}
 
-	const answers = {
-		powersOnAndDisplaysImage: parsedData.data.questionPowerOn === 'yes',
-		hasLock: parsedData.data.questionHasLock === 'yes',
-		hasVisibleDamage: parsedData.data.questionHasVisibleDamage === 'yes',
-		allFunctionsWork: parsedData.data.questionAllFunctionsWork === 'yes',
-		cosmeticCondition: parsedData.data.questionCosmeticCondition
-	};
-	const grade = computeValuationGrade(answers);
-	const proposedPrice = getPriceForGrade(
-		model.basePrice,
-		{
-			A: model.gradeAPercent,
-			B: model.gradeBPercent,
-			C: model.gradeCPercent,
-			D: model.gradeDPercent
-		},
-		grade
-	);
+		const insertedValuation = await db
+			.insert(valuations)
+			.values({
+				userId: user.id,
+				phoneModelId: model.id,
+				phoneColor: parsedData.data.phoneColor,
+				imei: parsedData.data.imeiUnreadable ? null : parsedData.data.imei,
+				imeiUnreadable: parsedData.data.imeiUnreadable,
+				powersOnAndDisplaysImage: answers.powersOnAndDisplaysImage,
+				hasLock: answers.hasLock,
+				hasVisibleDamage: answers.hasVisibleDamage,
+				allFunctionsWork: answers.allFunctionsWork,
+				cosmeticCondition: answers.cosmeticCondition,
+				grade,
+				proposedPrice,
+				status: 'abandoned'
+			})
+			.returning({
+				id: valuations.id
+			});
 
-	const insertedValuation = await db
-		.insert(valuations)
-		.values({
-			userId: user.id,
-			phoneModelId: model.id,
-			phoneColor: parsedData.data.phoneColor,
-			imei: parsedData.data.imeiUnreadable ? null : parsedData.data.imei,
-			imeiUnreadable: parsedData.data.imeiUnreadable,
-			powersOnAndDisplaysImage: answers.powersOnAndDisplaysImage,
-			hasLock: answers.hasLock,
-			hasVisibleDamage: answers.hasVisibleDamage,
-			allFunctionsWork: answers.allFunctionsWork,
-			cosmeticCondition: answers.cosmeticCondition,
+		return json({
+			valuationId: insertedValuation[0]?.id ?? '',
 			grade,
-			proposedPrice,
-			status: 'abandoned'
-		})
-		.returning({
-			id: valuations.id
+			proposedPrice
 		});
-
-	return json({
-		valuationId: insertedValuation[0]?.id ?? '',
-		grade,
-		proposedPrice
-	});
+	} finally {
+		await closeDbClient(sql);
+	}
 };
