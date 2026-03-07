@@ -1144,9 +1144,6 @@
 						{#if form?.formError}
 							<p class="text-xs text-destructive">{$t(form.formError)}</p>
 						{/if}
-						{#if form?.successMessage}
-							<p class="text-xs text-foreground">{$t(form.successMessage)}</p>
-						{/if}
 					</form>
 				{:else if isResultStep}
 					<p class="text-center text-xs text-foreground-muted">
