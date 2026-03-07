@@ -16,7 +16,7 @@
 
 :root {
 	--color-brand: oklch(0.8676 0.1736 90.37);
-	--color-canvas: oklch(0.75 0 0);
+	--color-canvas: oklch(0.78 0 0);
 	--color-surface: oklch(0.89 0 0 / 0.85);
 	--color-sidebar: oklch(0.8699 0 0);
 	--color-foreground: oklch(0.19 0 0);

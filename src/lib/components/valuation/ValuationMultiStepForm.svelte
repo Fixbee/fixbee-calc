@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import beeBackground from '$lib/assets/bee.svg';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { onDestroy, onMount } from 'svelte';
 	import { cubicOut } from 'svelte/easing';
@@ -704,8 +705,16 @@
 	};
 </script>
 
-<section class="flex h-full w-full flex-col items-center justify-center">
-	<div class="w-full sm:w-auto">
+<section class="relative isolate flex h-full w-full flex-col items-center justify-center">
+	<div class="pointer-events-none absolute inset-0 -z-10 flex items-start justify-end">
+		<img
+			src={beeBackground}
+			alt=""
+			aria-hidden="true"
+			class="h-dvh w-dvh max-w-none opacity-[0.12] select-none"
+		/>
+	</div>
+	<div class="relative z-10 w-full sm:w-auto">
 		<div class="relative mb-6">
 			<div class="relative px-1 sm:min-w-2xl">
 				<div class="absolute top-4 right-8 left-8 h-[1.5px] bg-border/70"></div>

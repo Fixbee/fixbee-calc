@@ -227,8 +227,8 @@
 	};
 </script>
 
-<div class="min-h-dvh bg-surface text-foreground">
-	<div class="flex min-h-dvh flex-col p-3">
+<div class="h-dvh bg-surface text-foreground">
+	<div class="flex h-full flex-col p-3">
 		<ProtectedMobileHeader onOpenMenu={openMobileNav} />
 
 		<ProtectedDesktopHeader
@@ -245,7 +245,7 @@
 
 		<main class="relative min-w-0 flex-1 overflow-auto overscroll-none sm:mt-4">
 			<div
-				class="absolute inset-0 overflow-y-auto overscroll-none rounded-4xl bg-canvas p-4 sm:p-8"
+				class="absolute inset-0 overflow-hidden overscroll-none rounded-4xl bg-canvas p-4 sm:p-8"
 			>
 				{@render children()}
 			</div>
