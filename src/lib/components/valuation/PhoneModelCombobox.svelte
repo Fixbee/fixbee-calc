@@ -122,32 +122,21 @@
 
 		const viewportWidth = window.innerWidth;
 		const viewportHeight = window.innerHeight;
-		const availableBelow = viewportHeight - anchorRect.bottom - VIEWPORT_MARGIN_PX;
-		const availableAbove = anchorRect.top - VIEWPORT_MARGIN_PX;
-		const openAbove = availableBelow < 180 && availableAbove > availableBelow;
-		const availableHeight = openAbove ? availableAbove : availableBelow;
+		const availableBelow =
+			viewportHeight - anchorRect.bottom - DROPDOWN_GAP_PX - VIEWPORT_MARGIN_PX;
 		const maxHeight = clamp(
-			availableHeight - DROPDOWN_GAP_PX,
-			MIN_DROPDOWN_HEIGHT_PX,
+			availableBelow,
+			Math.min(MIN_DROPDOWN_HEIGHT_PX, MAX_DROPDOWN_HEIGHT_PX),
 			MAX_DROPDOWN_HEIGHT_PX
 		);
 
 		const width = Math.max(anchorRect.width, 220);
-		const maxLeft = viewportWidth - VIEWPORT_MARGIN_PX - width;
-		const left = clamp(anchorRect.left, VIEWPORT_MARGIN_PX, Math.max(VIEWPORT_MARGIN_PX, maxLeft));
-		const top = openAbove
-			? clamp(
-					anchorRect.top - DROPDOWN_GAP_PX - maxHeight,
-					VIEWPORT_MARGIN_PX,
-					viewportHeight - VIEWPORT_MARGIN_PX - maxHeight
-				)
-			: clamp(
-					anchorRect.bottom + DROPDOWN_GAP_PX,
-					VIEWPORT_MARGIN_PX,
-					viewportHeight - VIEWPORT_MARGIN_PX - maxHeight
-				);
+		const minLeft = window.scrollX + VIEWPORT_MARGIN_PX;
+		const maxLeft = window.scrollX + viewportWidth - VIEWPORT_MARGIN_PX - width;
+		const left = clamp(window.scrollX + anchorRect.left, minLeft, Math.max(minLeft, maxLeft));
+		const top = window.scrollY + anchorRect.bottom + DROPDOWN_GAP_PX;
 
-		portalStyle = `position:fixed;top:${top}px;left:${left}px;width:${width}px;max-height:${maxHeight}px;`;
+		portalStyle = `position:absolute;top:${top}px;left:${left}px;width:${width}px;max-height:${maxHeight}px;`;
 	};
 
 	const schedulePortalPositionUpdate = () => {
