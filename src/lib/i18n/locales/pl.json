@@ -44,7 +44,8 @@
 		"grade": "Klasa",
 		"price": "Cena",
 		"status": "Status",
-		"created": "Utworzono"
+		"created": "Utworzono",
+		"rightsReserved": "Wszelkie prawa zastrzeżone © {year} Fixbee."
 	},
 	"auth": {
 		"login": {

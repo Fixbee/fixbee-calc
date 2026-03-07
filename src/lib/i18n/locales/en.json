@@ -44,7 +44,8 @@
 		"grade": "Grade",
 		"price": "Price",
 		"status": "Status",
-		"created": "Created"
+		"created": "Created",
+		"rightsReserved": "All rights reserved © {year} Fixbee."
 	},
 	"auth": {
 		"login": {

@@ -4,6 +4,7 @@
 	import { t } from 'svelte-i18n';
 
 	let { data, form } = $props();
+	const currentYear = new Date().getFullYear();
 </script>
 
 <div class="relative isolate h-dvh overflow-hidden bg-canvas">
@@ -96,4 +97,9 @@
 			</Card>
 		</div>
 	</div>
+	<p
+		class="pointer-events-none absolute right-0 bottom-4 left-0 z-4 text-center text-[11px] text-foreground-muted/85"
+	>
+		{$t('common.rightsReserved', { values: { year: currentYear } })}
+	</p>
 </div>

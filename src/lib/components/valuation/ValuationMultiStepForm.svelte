@@ -127,6 +127,7 @@
 	};
 
 	let { phoneModels, helpTips, form = null }: Props = $props();
+	const currentYear = new Date().getFullYear();
 
 	const questionDefinitions: QuestionDefinition[] = [
 		{
@@ -1179,6 +1180,11 @@
 			</div>
 		</Card>
 	</div>
+	<p
+		class="pointer-events-none absolute right-0 bottom-3 left-0 z-20 text-center text-[11px] text-foreground-muted/85"
+	>
+		{$t('common.rightsReserved', { values: { year: currentYear } })}
+	</p>
 </section>
 
 <style>
