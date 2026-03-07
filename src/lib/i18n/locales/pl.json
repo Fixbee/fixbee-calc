@@ -48,7 +48,7 @@
 	},
 	"auth": {
 		"login": {
-			"title": "Witaj ponownie",
+			"title": "Witaj!",
 			"subtitle": "Zaloguj się, aby kontynuować.",
 			"emailPlaceholder": "ty@firma.com",
 			"passwordPlaceholder": "Wpisz hasło"
@@ -114,7 +114,7 @@
 		},
 		"summary": {
 			"title": "Proponowana wycena",
-			"subtitle": "Sprawdź i potwierdź obliczony wynik.",
+			"subtitle": "Sprawdź i potwierdź wycenę.",
 			"grade": "Klasa",
 			"suggestedBuybackPrice": "Maksymalna cena odkupu",
 			"fixbeeBuybackPrice": "Cena odkupu Fixbee"
