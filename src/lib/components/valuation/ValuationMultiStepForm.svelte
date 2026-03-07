@@ -953,36 +953,40 @@
 										<p class="mt-3 text-sm text-foreground-muted">
 											{$t('valuation.summary.subtitle')}
 										</p>
-										<div class="mt-8 grid gap-6 sm:grid-cols-2">
-											<div class="space-y-2">
-												<p class="text-sm text-foreground-muted">
-													{$t('valuation.summary.grade')}
-												</p>
+										<div class="mt-8 flex justify-center">
+											<div class="w-full max-w-md space-y-4 text-center">
+												<div class="space-y-2">
+													<p class="text-sm text-foreground-muted">
+														{$t('valuation.summary.suggestedBuybackPrice')}
+													</p>
+													<p
+														class="text-4xl leading-none font-medium tracking-tight text-title sm:text-5xl"
+													>
+														{suggestedBuybackPrice === null
+															? '-'
+															: formatPrice(suggestedBuybackPrice)}
+													</p>
+												</div>
+
 												<p
-													class="text-3xl leading-none font-medium tracking-tight text-title sm:text-4xl"
+													class="flex items-baseline justify-center gap-1 text-xs whitespace-nowrap text-foreground-muted"
 												>
-													{calculatedGrade ?? '-'}
+													<span>{$t('valuation.summary.fixbeeBuybackPrice')}:</span>
+													<span class="font-medium text-foreground">
+														{calculatedPrice === null ? '-' : formatPrice(calculatedPrice)}
+													</span>
 												</p>
-											</div>
-											<div class="space-y-3">
-												<p class="text-sm text-foreground-muted">
-													{$t('valuation.summary.suggestedBuybackPrice')}
-												</p>
-												<p
-													class="text-3xl leading-none font-medium tracking-tight text-title sm:text-4xl"
+
+												<div
+													class="mx-auto mt-2 hidden w-fit items-center gap-1 rounded-2xl border border-border/70 px-3 py-1"
 												>
-													{suggestedBuybackPrice === null
-														? '-'
-														: formatPrice(suggestedBuybackPrice)}
-												</p>
-												<p class="text-xs text-foreground-muted">
-													{$t('valuation.summary.fixbeeBuybackPrice')}
-												</p>
-												<p
-													class="text-xl leading-none font-medium tracking-tight text-title sm:text-2xl"
-												>
-													{calculatedPrice === null ? '-' : formatPrice(calculatedPrice)}
-												</p>
+													<span class="text-[10px] text-foreground-muted">
+														{$t('valuation.summary.grade')}
+													</span>
+													<span class="text-sm font-medium text-title">
+														{calculatedGrade ?? '-'}
+													</span>
+												</div>
 											</div>
 										</div>
 									</div>
