@@ -8,6 +8,7 @@
 	import ProtectedDesktopHeader from '$lib/components/protected/ProtectedDesktopHeader.svelte';
 	import ProtectedMobileHeader from '$lib/components/protected/ProtectedMobileHeader.svelte';
 	import ProtectedMobileSheet from '$lib/components/protected/ProtectedMobileSheet.svelte';
+	import beeBackground from '$lib/assets/bee.svg';
 
 	type ProfileUpdateResponse = {
 		profile?: {
@@ -243,11 +244,19 @@
 			onAvatarError={handleAvatarImageError}
 		/>
 
-		<main class="relative min-w-0 flex-1 overflow-auto overscroll-none sm:mt-4">
+		<main class="relative min-w-0 flex-1 overflow-hidden overscroll-none sm:mt-4">
 			<div
-				class="absolute inset-0 overflow-hidden overscroll-none rounded-4xl bg-canvas p-4 sm:p-8"
+				class="absolute inset-0 z-0 overflow-y-auto overscroll-none rounded-4xl bg-canvas p-4 sm:p-8"
 			>
 				{@render children()}
+				<div class="pointer-events-none absolute inset-8 -z-10 flex items-end justify-end">
+					<img
+						src={beeBackground}
+						alt=""
+						aria-hidden="true"
+						class="h-auto w-dvh max-w-none opacity-[0.12] select-none"
+					/>
+				</div>
 			</div>
 		</main>
 	</div>
