@@ -12,6 +12,7 @@ declare global {
 		interface PageData {
 			user: User | null;
 			locale?: string;
+			siteOrigin?: string;
 		}
 		// interface PageState {}
 		// interface Platform {}

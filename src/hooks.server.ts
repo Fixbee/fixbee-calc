@@ -77,6 +77,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	return resolve(event, {
+		transformPageChunk: ({ html }) => html.replace('%lang%', event.locals.locale),
 		filterSerializedResponseHeaders(name) {
 			return name === 'content-range' || name === 'x-supabase-api-version';
 		}
