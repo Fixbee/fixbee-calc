@@ -1,10 +1,25 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import type { SubmitFunction } from '@sveltejs/kit';
 	import { AuthLogo, Button, Card, Checkbox, Input } from '$lib';
 	import { resolve } from '$app/paths';
 	import { t } from 'svelte-i18n';
 
 	let { data, form } = $props();
 	const currentYear = new Date().getFullYear();
+	let isSubmitting = $state(false);
+
+	const submitEnhance: SubmitFunction = () => {
+		isSubmitting = true;
+
+		return async ({ update }) => {
+			try {
+				await update();
+			} finally {
+				isSubmitting = false;
+			}
+		};
+	};
 </script>
 
 <div class="relative isolate h-dvh overflow-hidden bg-canvas">
@@ -23,7 +38,7 @@
 					</p>
 				</header>
 
-				<form class="space-y-5" method="POST" novalidate>
+				<form class="space-y-5" method="POST" novalidate use:enhance={submitEnhance}>
 					<div>
 						<label class="mb-1.5 inline-block text-label select-none" for="email">
 							{$t('common.email')}
@@ -87,7 +102,36 @@
 						<Button class="hidden" size="full" variant="secondary" type="button">
 							{$t('common.requestAccess')}
 						</Button>
-						<Button size="full" type="submit">{$t('common.logIn')}</Button>
+						<Button size="full" type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>
+							{#if isSubmitting}
+								<span class="inline-flex items-center gap-2">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										class="size-3.5 animate-spin"
+										aria-hidden="true"
+									>
+										<circle
+											cx="12"
+											cy="12"
+											r="9"
+											stroke="currentColor"
+											stroke-opacity="0.3"
+											stroke-width="2"
+										/>
+										<path
+											d="M12 3a9 9 0 0 1 9 9"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+										/>
+									</svg>
+									{$t('common.loggingIn')}
+								</span>
+							{:else}
+								{$t('common.logIn')}
+							{/if}
+						</Button>
 					</div>
 
 					{#if form?.formError}
