@@ -30,7 +30,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 						(options.expires instanceof Date && options.expires.getTime() <= Date.now());
 					const cookieOptions = {
 						...options,
-						path: '/'
+						path: '/',
+						secure: !dev
 					};
 
 					if (!remember && !isClearingCookie) {
