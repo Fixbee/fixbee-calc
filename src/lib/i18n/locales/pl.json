@@ -116,7 +116,8 @@
 			"title": "Proponowana wycena",
 			"subtitle": "Sprawdź i potwierdź obliczony wynik.",
 			"grade": "Klasa",
-			"price": "Proponowana cena"
+			"suggestedBuybackPrice": "Sugerowana cena odkupu (80%)",
+			"fixbeeBuybackPrice": "Cena odkupu Fixbee (pełna)"
 		},
 		"result": {
 			"acceptedTitle": "Wycena zaakceptowana",

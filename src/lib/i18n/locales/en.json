@@ -116,7 +116,8 @@
 			"title": "Proposed valuation",
 			"subtitle": "Review and confirm the calculated result.",
 			"grade": "Grade",
-			"price": "Proposed price"
+			"suggestedBuybackPrice": "Suggested buyback price (80%)",
+			"fixbeeBuybackPrice": "Fixbee buyback price (full)"
 		},
 		"result": {
 			"acceptedTitle": "Valuation accepted",

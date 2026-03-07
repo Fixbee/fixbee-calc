@@ -446,6 +446,14 @@
 		);
 	});
 
+	const suggestedBuybackPrice = $derived.by(() => {
+		if (calculatedPrice === null) {
+			return null;
+		}
+
+		return Math.round(calculatedPrice * 0.8);
+	});
+
 	const currentQuestion = $derived(
 		currentStep > 0 && currentStep <= questionDefinitions.length
 			? questionDefinitions[currentStep - 1]
@@ -956,12 +964,22 @@
 													{calculatedGrade ?? '-'}
 												</p>
 											</div>
-											<div class="space-y-2">
+											<div class="space-y-3">
 												<p class="text-sm text-foreground-muted">
-													{$t('valuation.summary.price')}
+													{$t('valuation.summary.suggestedBuybackPrice')}
 												</p>
 												<p
 													class="text-3xl leading-none font-medium tracking-tight text-title sm:text-4xl"
+												>
+													{suggestedBuybackPrice === null
+														? '-'
+														: formatPrice(suggestedBuybackPrice)}
+												</p>
+												<p class="text-xs text-foreground-muted">
+													{$t('valuation.summary.fixbeeBuybackPrice')}
+												</p>
+												<p
+													class="text-xl leading-none font-medium tracking-tight text-title sm:text-2xl"
 												>
 													{calculatedPrice === null ? '-' : formatPrice(calculatedPrice)}
 												</p>
