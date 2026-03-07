@@ -30,6 +30,7 @@ const valuationDetailsBaseSchema = z.object({
 		.string()
 		.trim()
 		.min(1, 'errors.phoneColorRequired')
+		.refine((value) => !/\d/.test(value), 'errors.phoneColorNoDigits')
 		.max(80, 'errors.phoneColorTooLong'),
 	imeiUnreadable: z.boolean(),
 	imei: z

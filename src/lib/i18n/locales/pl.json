@@ -168,6 +168,7 @@
 		"imeiInvalid": "Wpisz poprawny 15‑cyfrowy numer IMEI.",
 		"phoneModelRequired": "Wybierz model telefonu.",
 		"phoneColorRequired": "Kolor telefonu jest wymagany.",
+		"phoneColorNoDigits": "Kolor telefonu nie może zawierać cyfr.",
 		"phoneColorTooLong": "Kolor telefonu jest zbyt długi.",
 		"imeiTooLong": "Wartość IMEI jest zbyt długa.",
 		"missingValuationAnswers": "Brakuje odpowiedzi z wyceny. Sprawdź poprzedni krok.",
