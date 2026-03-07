@@ -1,6 +1,6 @@
 {
 	"app": {
-		"name": "Fixbee"
+		"name": "fixbee"
 	},
 	"navigation": {
 		"valuation": "Wycena",
@@ -46,7 +46,7 @@
 		"price": "Cena",
 		"status": "Status",
 		"created": "Utworzono",
-		"rightsReserved": "Wszelkie prawa zastrzeżone © {year} Fixbee."
+		"rightsReserved": "Wszelkie prawa zastrzeżone © {year} fixbee."
 	},
 	"auth": {
 		"login": {
@@ -119,7 +119,7 @@
 			"subtitle": "Sprawdź i potwierdź wycenę.",
 			"grade": "Klasa",
 			"suggestedBuybackPrice": "Maksymalna cena odkupu",
-			"fixbeeBuybackPrice": "Cena odkupu Fixbee"
+			"fixbeeBuybackPrice": "Cena odkupu fixbee"
 		},
 		"result": {
 			"acceptedTitle": "Wycena zaakceptowana",

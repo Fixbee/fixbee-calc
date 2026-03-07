@@ -1,6 +1,6 @@
 {
 	"app": {
-		"name": "Fixbee"
+		"name": "fixbee"
 	},
 	"navigation": {
 		"valuation": "Valuation",
@@ -46,7 +46,7 @@
 		"price": "Price",
 		"status": "Status",
 		"created": "Created",
-		"rightsReserved": "All rights reserved © {year} Fixbee."
+		"rightsReserved": "All rights reserved © {year} fixbee."
 	},
 	"auth": {
 		"login": {
@@ -119,7 +119,7 @@
 			"subtitle": "Review and confirm the valuation.",
 			"grade": "Grade",
 			"suggestedBuybackPrice": "Maximal buyback price",
-			"fixbeeBuybackPrice": "Fixbee buyback price"
+			"fixbeeBuybackPrice": "fixbee buyback price"
 		},
 		"result": {
 			"acceptedTitle": "Valuation accepted",
