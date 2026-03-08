@@ -71,9 +71,11 @@
 		"title": "Edit company profile",
 		"subtitle": "Update company name and avatar shown in the sidebar.",
 		"avatar": "Avatar",
+		"noFileSelected": "No file selected",
 		"companyName": "Company name",
 		"companyAccount": "Company account",
-		"unknownEmail": "unknown"
+		"unknownEmail": "unknown",
+		"changeAvatar": "Change avatar"
 	},
 	"history": {
 		"statusAccepted": "ACCEPTED",

@@ -71,9 +71,11 @@
 		"title": "Edytuj profil firmy",
 		"subtitle": "Zaktualizuj nazwę firmy i avatar widoczny w panelu.",
 		"avatar": "Avatar",
+		"noFileSelected": "Nie wybrano pliku",
 		"companyName": "Nazwa firmy",
 		"companyAccount": "Konto firmowe",
-		"unknownEmail": "nieznany"
+		"unknownEmail": "nieznany",
+		"changeAvatar": "Zmień avatar"
 	},
 	"history": {
 		"statusAccepted": "ZAAKCEPTOWANA",

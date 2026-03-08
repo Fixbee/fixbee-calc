@@ -4,6 +4,7 @@
 	import Input from '$lib/components/ui/Input.svelte';
 	import LanguageCombobox from '$lib/components/account/LanguageCombobox.svelte';
 	import { ALLOWED_AVATAR_ACCEPT } from '$lib/account/profile';
+	import { Camera } from 'lucide-svelte';
 	import { fade, scale } from 'svelte/transition';
 	import { t } from 'svelte-i18n';
 
@@ -47,6 +48,14 @@
 	}: Props = $props();
 
 	const getDisplayName = () => profileDraftCompanyName || accountName;
+	let avatarFileName = $state('');
+
+	const handleAvatarChange = (event: Event) => {
+		const input = event.currentTarget as HTMLInputElement | null;
+		avatarFileName = input?.files?.[0]?.name ?? '';
+		onAvatarChange(event);
+	};
+
 	const languageOptions = $derived.by(() => [
 		{ id: 'en', label: $t('common.english') },
 		{ id: 'pl', label: $t('common.polish') }
@@ -80,31 +89,43 @@
 
 				<form class="space-y-5" onsubmit={onSubmit} novalidate>
 					<div class="flex items-center gap-4">
-						{#if avatarPreviewUrl}
-							<img
-								src={avatarPreviewUrl}
-								alt={getDisplayName()}
-								class="size-16 rounded-full border border-border object-cover"
-							/>
-						{:else}
-							<div
-								class="inline-flex size-16 items-center justify-center rounded-full bg-accent text-base font-medium text-accent-foreground"
-							>
-								{getInitials(getDisplayName())}
-							</div>
-						{/if}
-
-						<div class="min-w-0 flex-1">
-							<label class="mb-1.5 inline-block text-label select-none" for="avatar">
-								{$t('profile.avatar')}
-							</label>
+						<div class="relative size-16 shrink-0">
+							{#if avatarPreviewUrl}
+								<img
+									src={avatarPreviewUrl}
+									alt={getDisplayName()}
+									class="size-full rounded-full border border-border object-cover"
+								/>
+							{:else}
+								<div
+									class="inline-flex size-full items-center justify-center rounded-full bg-accent text-base font-medium text-accent-foreground"
+								>
+									{getInitials(getDisplayName())}
+								</div>
+							{/if}
 							<input
 								id="avatar"
 								type="file"
 								accept={ALLOWED_AVATAR_ACCEPT}
-								onchange={onAvatarChange}
-								class="block w-full text-xs text-foreground-muted transition-all duration-200 file:mr-3 file:rounded-xl file:border-0 file:bg-input file:px-3 file:py-2 file:text-xs file:font-medium file:text-foreground hover:file:bg-input-secondary"
+								onchange={handleAvatarChange}
+								class="peer sr-only"
 							/>
+							<label
+								for="avatar"
+								class="peer-focus-visible:ring-ring absolute -right-1 -bottom-1 inline-flex size-6 cursor-pointer items-center justify-center rounded-full border border-border bg-canvas text-foreground shadow-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 hover:bg-sidebar"
+							>
+								<span class="sr-only">{$t('profile.changeAvatar')}</span>
+								<Camera class="size-3.5" aria-hidden="true" />
+							</label>
+						</div>
+
+						<div class="min-w-0 flex-1">
+							<p class="mb-1.5 text-label select-none">
+								{$t('profile.avatar')}
+							</p>
+							<p class="mt-1.5 truncate text-xs text-foreground-muted">
+								{avatarFileName || $t('profile.noFileSelected')}
+							</p>
 							{#if profileFieldErrors.avatar}
 								<p class="mt-1.5 text-xs text-destructive">
 									{$t(profileFieldErrors.avatar)}
