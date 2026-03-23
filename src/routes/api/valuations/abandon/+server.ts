@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import { closeDbClient, createDbClient } from '$lib/server/db/client';
 import { phoneModels, valuations } from '$lib/server/db/schema';
+import { getInstalmentDiscountPercent } from '$lib/server/valuation/settings';
 import {
 	applyInstalmentDiscount,
 	computeValuationGrade,
@@ -59,6 +60,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	const { db, sql } = createDbClient();
 
 	try {
+		const instalmentDiscountPercent = await getInstalmentDiscountPercent(db);
+
 		const model = await db
 			.select({
 				id: phoneModels.id,
@@ -102,6 +105,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		);
 		const proposedPrice = applyInstalmentDiscount(
 			baseProposedPrice,
+			instalmentDiscountPercent,
 			parsedData.data.isInstalmentPhone
 		);
 

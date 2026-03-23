@@ -124,10 +124,11 @@
 	type Props = {
 		phoneModels: PhoneModelOption[];
 		helpTips: HelpTip[];
+		instalmentDiscountPercent: number;
 		form?: ValuationFormState | null;
 	};
 
-	let { phoneModels, helpTips, form = null }: Props = $props();
+	let { phoneModels, helpTips, instalmentDiscountPercent, form = null }: Props = $props();
 	const currentYear = new Date().getFullYear();
 
 	const questionDefinitions: QuestionDefinition[] = [
@@ -448,7 +449,7 @@
 			},
 			calculatedGrade
 		);
-		return applyInstalmentDiscount(basePrice, isInstalmentPhone);
+		return applyInstalmentDiscount(basePrice, instalmentDiscountPercent, isInstalmentPhone);
 	});
 
 	const suggestedBuybackPrice = $derived.by(() => {

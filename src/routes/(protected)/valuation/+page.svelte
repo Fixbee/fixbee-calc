@@ -4,4 +4,9 @@
 	let { data, form } = $props();
 </script>
 
-<ValuationMultiStepForm phoneModels={data.phoneModels} helpTips={data.helpTips} {form} />
+<ValuationMultiStepForm
+	phoneModels={data.phoneModels}
+	helpTips={data.helpTips}
+	instalmentDiscountPercent={data.instalmentDiscountPercent}
+	{form}
+/>

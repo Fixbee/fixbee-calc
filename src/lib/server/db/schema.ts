@@ -92,3 +92,10 @@ export const valuationHelpTips = pgTable('valuation_help_tips', {
 	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow()
 });
+
+export const appSettings = pgTable('app_settings', {
+	id: integer('id').primaryKey().notNull().default(1),
+	instalmentDiscountPercent: integer('instalment_discount_percent').notNull(),
+	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+	updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow()
+});

@@ -42,5 +42,15 @@ export const getPriceForGrade = (
 	grade: ValuationGrade
 ) => Math.round((basePrice * gradePercentages[grade]) / 100);
 
-export const applyInstalmentDiscount = (priceInGrosz: number, isInstalmentPhone: boolean) =>
-	isInstalmentPhone ? Math.round(priceInGrosz * 0.5) : priceInGrosz;
+export const applyInstalmentDiscount = (
+	priceInGrosz: number,
+	discountPercent: number,
+	isInstalmentPhone: boolean
+) => {
+	if (!isInstalmentPhone) {
+		return priceInGrosz;
+	}
+
+	const normalizedDiscountPercent = Math.max(0, Math.min(100, Math.round(discountPercent)));
+	return Math.round((priceInGrosz * (100 - normalizedDiscountPercent)) / 100);
+};

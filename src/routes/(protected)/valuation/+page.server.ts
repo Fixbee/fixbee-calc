@@ -1,5 +1,6 @@
 import { closeDbClient, createDbClient } from '$lib/server/db/client';
 import { phoneModels, users, valuationHelpTips, valuations } from '$lib/server/db/schema';
+import { getInstalmentDiscountPercent } from '$lib/server/valuation/settings';
 import {
 	applyInstalmentDiscount,
 	computeValuationGrade,
@@ -93,10 +94,12 @@ export const load: PageServerLoad = async () => {
 			},
 			sortOrder: tip.sortOrder
 		}));
+		const instalmentDiscountPercent = await getInstalmentDiscountPercent(db);
 
 		return {
 			phoneModels: models,
-			helpTips: normalizedHelpTips
+			helpTips: normalizedHelpTips,
+			instalmentDiscountPercent
 		};
 	} finally {
 		await closeDbClient(sql);
@@ -154,6 +157,7 @@ export const actions: Actions = {
 				.limit(1)
 				.then((rows) => rows[0] ?? null);
 			const isAdmin = actorProfile?.role === 'admin';
+			const instalmentDiscountPercent = await getInstalmentDiscountPercent(db);
 
 			const model = await db
 				.select({
@@ -199,6 +203,7 @@ export const actions: Actions = {
 			);
 			const proposedPrice = applyInstalmentDiscount(
 				baseProposedPrice,
+				instalmentDiscountPercent,
 				parsedData.data.isInstalmentPhone
 			);
 

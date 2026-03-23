@@ -126,6 +126,27 @@ export type Database = {
 				};
 				Relationships: [];
 			};
+			app_settings: {
+				Row: {
+					id: number;
+					instalment_discount_percent: number;
+					created_at: string;
+					updated_at: string;
+				};
+				Insert: {
+					id?: number;
+					instalment_discount_percent?: number;
+					created_at?: string;
+					updated_at?: string;
+				};
+				Update: {
+					id?: number;
+					instalment_discount_percent?: number;
+					created_at?: string;
+					updated_at?: string;
+				};
+				Relationships: [];
+			};
 		};
 		Views: Record<string, never>;
 		Functions: Record<string, never>;
