@@ -45,23 +45,32 @@ const getAggregatedReport = async (
 	periodType: PeriodType
 ) => {
 	const rows = await clientSql<AggregatedRow[]>`
+		WITH valuations_by_period AS (
+			SELECT
+				v.user_id,
+				u.email AS user_email,
+				u.company_name,
+				v.status,
+				date_trunc(${periodType}, v.created_at)::date AS period_start
+			FROM public.valuations v
+			INNER JOIN public.users u ON u.id = v.user_id
+			WHERE u.role = 'user'
+		)
 		SELECT
-			v.user_id,
-			u.email AS user_email,
-			u.company_name,
-			date_trunc(${periodType}, v.created_at)::date::text AS period_start,
+			vbp.user_id,
+			vbp.user_email,
+			vbp.company_name,
+			vbp.period_start::text AS period_start,
 			count(*)::int AS valuations_total,
-			count(*) FILTER (WHERE v.status = 'accepted')::int AS accepted_total,
+			count(*) FILTER (WHERE vbp.status = 'accepted')::int AS accepted_total,
 			COALESCE(max(ads.sold_devices_count), 0)::int AS sold_devices_count
-		FROM public.valuations v
-		INNER JOIN public.users u ON u.id = v.user_id
+		FROM valuations_by_period vbp
 		LEFT JOIN public.admin_device_sales ads
-			ON ads.user_id = v.user_id
+			ON ads.user_id = vbp.user_id
 			AND ads.period_type = ${periodType}
-			AND ads.period_start = date_trunc(${periodType}, v.created_at)::date
-		WHERE u.role = 'user'
-		GROUP BY v.user_id, u.email, u.company_name, date_trunc(${periodType}, v.created_at)::date
-		ORDER BY date_trunc(${periodType}, v.created_at)::date DESC, valuations_total DESC, u.email ASC
+			AND ads.period_start = vbp.period_start
+		GROUP BY vbp.user_id, vbp.user_email, vbp.company_name, vbp.period_start
+		ORDER BY vbp.period_start DESC, valuations_total DESC, vbp.user_email ASC
 	`;
 
 	return rows.map(mapAggregatedRow);
