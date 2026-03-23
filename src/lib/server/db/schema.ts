@@ -1,10 +1,12 @@
 import {
 	boolean,
+	date,
 	index,
 	integer,
 	jsonb,
 	pgEnum,
 	pgTable,
+	primaryKey,
 	serial,
 	text,
 	timestamp,
@@ -23,6 +25,7 @@ export const valuationStatusEnum = pgEnum('valuation_status', [
 	'abandoned'
 ]);
 export const appRoleEnum = pgEnum('app_role', ['admin', 'user']);
+export const reportPeriodTypeEnum = pgEnum('report_period_type', ['week', 'month']);
 
 export const users = pgTable('users', {
 	id: uuid('id').primaryKey().notNull(),
@@ -99,3 +102,23 @@ export const appSettings = pgTable('app_settings', {
 	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow()
 });
+
+export const adminDeviceSales = pgTable(
+	'admin_device_sales',
+	{
+		userId: uuid('user_id')
+			.notNull()
+			.references(() => users.id, { onDelete: 'cascade' }),
+		periodType: reportPeriodTypeEnum('period_type').notNull(),
+		periodStart: date('period_start', { mode: 'string' }).notNull(),
+		soldDevicesCount: integer('sold_devices_count').notNull().default(0),
+		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+		updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow()
+	},
+	(table) => ({
+		pk: primaryKey({
+			name: 'admin_device_sales_pk',
+			columns: [table.userId, table.periodType, table.periodStart]
+		})
+	})
+);

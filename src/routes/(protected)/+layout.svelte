@@ -25,10 +25,18 @@
 
 	let { data, children } = $props();
 
-	const navigationItems = $derived.by(() => [
-		{ href: '/valuation', label: $t('navigation.valuation') },
-		{ href: '/history', label: $t('navigation.history') }
-	]);
+	const navigationItems = $derived.by(() => {
+		const items = [
+			{ href: '/valuation', label: $t('navigation.valuation') },
+			{ href: '/history', label: $t('navigation.history') }
+		];
+
+		if (data.appRole === 'admin') {
+			items.push({ href: '/admin', label: $t('navigation.admin') });
+		}
+
+		return items;
+	});
 	const currentPath = $derived(page.url.pathname);
 
 	const getUserMetadata = () => {

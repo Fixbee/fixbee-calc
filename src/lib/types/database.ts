@@ -147,11 +147,39 @@ export type Database = {
 				};
 				Relationships: [];
 			};
+			admin_device_sales: {
+				Row: {
+					user_id: string;
+					period_type: Database['public']['Enums']['report_period_type'];
+					period_start: string;
+					sold_devices_count: number;
+					created_at: string;
+					updated_at: string;
+				};
+				Insert: {
+					user_id: string;
+					period_type: Database['public']['Enums']['report_period_type'];
+					period_start: string;
+					sold_devices_count?: number;
+					created_at?: string;
+					updated_at?: string;
+				};
+				Update: {
+					user_id?: string;
+					period_type?: Database['public']['Enums']['report_period_type'];
+					period_start?: string;
+					sold_devices_count?: number;
+					created_at?: string;
+					updated_at?: string;
+				};
+				Relationships: [];
+			};
 		};
 		Views: Record<string, never>;
 		Functions: Record<string, never>;
 		Enums: {
 			app_role: 'admin' | 'user';
+			report_period_type: 'week' | 'month';
 			phone_cosmetic_condition: 'none' | 'light' | 'heavy';
 			valuation_grade: 'A' | 'B' | 'C' | 'D';
 			valuation_status: 'accepted' | 'rejected' | 'abandoned';

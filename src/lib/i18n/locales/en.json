@@ -5,6 +5,7 @@
 	"navigation": {
 		"valuation": "Valuation",
 		"history": "History",
+		"admin": "Admin panel",
 		"settings": "Settings",
 		"logout": "Log out"
 	},
@@ -82,6 +83,22 @@
 		"statusRejected": "REJECTED",
 		"statusAbandoned": "ABANDONED"
 	},
+	"admin": {
+		"title": "Administrative panel",
+		"subtitle": "Overview of salon activity and devices sold to central.",
+		"weeklySectionTitle": "Weekly report",
+		"monthlySectionTitle": "Monthly report",
+		"table": {
+			"salon": "Salon",
+			"period": "Period",
+			"valuations": "Valuations",
+			"accepted": "Accepted",
+			"soldToCentral": "Sold to central",
+			"updateSoldCount": "Number of sold devices",
+			"save": "Save",
+			"noData": "No data to display."
+		}
+	},
 	"valuation": {
 		"timeline": {
 			"details": "Phone details",
@@ -136,7 +153,8 @@
 	"messages": {
 		"resetEmailSent": "If an account exists for that email, a reset link has been sent. Check your inbox and spam folder.",
 		"valuationAcceptedSaved": "Valuation accepted and saved.",
-		"valuationDeclinedSaved": "Valuation marked as not accepted."
+		"valuationDeclinedSaved": "Valuation marked as not accepted.",
+		"adminSoldDevicesSaved": "Sold devices count has been saved."
 	},
 	"errors": {
 		"emailRequired": "Email is required.",
@@ -180,6 +198,10 @@
 		"couldNotStoreDraft": "Could not store abandoned valuation draft.",
 		"unexpectedStoreDraft": "Unexpected error while storing abandoned valuation draft.",
 		"chooseAnswer": "Choose an answer before continuing.",
-		"couldNotContinue": "Could not continue. Try again."
+		"couldNotContinue": "Could not continue. Try again.",
+		"adminOnly": "Only an administrator can perform this action.",
+		"adminInvalidInput": "Invalid report input.",
+		"adminInvalidSoldDevices": "Enter a valid sold devices count.",
+		"adminInvalidUser": "Selected salon does not exist or is not a salon account."
 	}
 }

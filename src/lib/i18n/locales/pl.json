@@ -5,6 +5,7 @@
 	"navigation": {
 		"valuation": "Wycena",
 		"history": "Historia",
+		"admin": "Panel admina",
 		"settings": "Ustawienia",
 		"logout": "Wyloguj"
 	},
@@ -82,6 +83,22 @@
 		"statusRejected": "ODRZUCONA",
 		"statusAbandoned": "PORZUCONA"
 	},
+	"admin": {
+		"title": "Panel administracyjny",
+		"subtitle": "Zestawienie pracy salonów i sprzedaży telefonów do centrali.",
+		"weeklySectionTitle": "Raport tygodniowy",
+		"monthlySectionTitle": "Raport miesięczny",
+		"table": {
+			"salon": "Salon",
+			"period": "Okres",
+			"valuations": "Wyceny",
+			"accepted": "Zaakceptowane",
+			"soldToCentral": "Sprzedane do centrali",
+			"updateSoldCount": "Liczba sprzedanych urządzeń",
+			"save": "Zapisz",
+			"noData": "Brak danych do wyświetlenia."
+		}
+	},
 	"valuation": {
 		"timeline": {
 			"details": "Dane telefonu",
@@ -136,7 +153,8 @@
 	"messages": {
 		"resetEmailSent": "Jeśli konto istnieje dla tego adresu, wysłano link resetujący. Sprawdź skrzynkę i spam.",
 		"valuationAcceptedSaved": "Wycena zaakceptowana i zapisana.",
-		"valuationDeclinedSaved": "Wycena oznaczona jako niezaakceptowana."
+		"valuationDeclinedSaved": "Wycena oznaczona jako niezaakceptowana.",
+		"adminSoldDevicesSaved": "Liczba sprzedanych urządzeń została zapisana."
 	},
 	"errors": {
 		"emailRequired": "Email jest wymagany.",
@@ -180,6 +198,10 @@
 		"couldNotStoreDraft": "Nie udało się zapisać porzuconego szkicu wyceny.",
 		"unexpectedStoreDraft": "Nieoczekiwany błąd podczas zapisywania porzuconego szkicu wyceny.",
 		"chooseAnswer": "Wybierz odpowiedź przed kontynuacją.",
-		"couldNotContinue": "Nie można kontynuować. Spróbuj ponownie."
+		"couldNotContinue": "Nie można kontynuować. Spróbuj ponownie.",
+		"adminOnly": "Tylko administrator ma dostęp do tej akcji.",
+		"adminInvalidInput": "Nieprawidłowe dane raportu.",
+		"adminInvalidSoldDevices": "Wpisz poprawną liczbę sprzedanych urządzeń.",
+		"adminInvalidUser": "Wskazany salon nie istnieje lub nie jest kontem salonu."
 	}
 }
