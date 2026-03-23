@@ -188,6 +188,17 @@ export const actions: Actions = {
 				const updatedValuation = await db
 					.update(valuations)
 					.set({
+						phoneModelId: model.id,
+						phoneColor: parsedData.data.phoneColor,
+						imei: parsedData.data.imeiUnreadable ? null : parsedData.data.imei,
+						imeiUnreadable: parsedData.data.imeiUnreadable,
+						powersOnAndDisplaysImage: answers.powersOnAndDisplaysImage,
+						hasLock: answers.hasLock,
+						hasVisibleDamage: answers.hasVisibleDamage,
+						allFunctionsWork: answers.allFunctionsWork,
+						cosmeticCondition: answers.cosmeticCondition,
+						grade,
+						proposedPrice,
 						status: parsedData.data.decision,
 						updatedAt: sql`now()`
 					})
