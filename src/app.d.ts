@@ -13,6 +13,7 @@ declare global {
 			user: User | null;
 			locale?: string;
 			siteOrigin?: string;
+			appRole?: 'admin' | 'user';
 		}
 		// interface PageState {}
 		// interface Platform {}

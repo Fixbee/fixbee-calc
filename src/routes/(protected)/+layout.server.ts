@@ -18,7 +18,8 @@ export const load: LayoutServerLoad = async ({ locals }) => {
 
 		return {
 			user,
-			profile: profile ?? null
+			profile: profile ?? null,
+			appRole: profile?.role ?? 'user'
 		};
 	} finally {
 		await closeDbClient(sql);

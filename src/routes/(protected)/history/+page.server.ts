@@ -1,5 +1,5 @@
 import { closeDbClient, createDbClient } from '$lib/server/db/client';
-import { phoneModels, valuations } from '$lib/server/db/schema';
+import { phoneModels, users, valuations } from '$lib/server/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import type { PageServerLoad } from './$types';
 
@@ -15,7 +15,17 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const { db, sql } = createDbClient();
 
 	try {
-		const userValuations = await db
+		const actorProfile = await db
+			.select({
+				role: users.role
+			})
+			.from(users)
+			.where(eq(users.id, user.id))
+			.limit(1)
+			.then((rows) => rows[0] ?? null);
+		const isAdmin = actorProfile?.role === 'admin';
+
+		const baseQuery = db
 			.select({
 				id: valuations.id,
 				model: phoneModels.model,
@@ -27,9 +37,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 				createdAt: valuations.createdAt
 			})
 			.from(valuations)
-			.innerJoin(phoneModels, eq(phoneModels.id, valuations.phoneModelId))
-			.where(eq(valuations.userId, user.id))
-			.orderBy(desc(valuations.updatedAt));
+			.innerJoin(phoneModels, eq(phoneModels.id, valuations.phoneModelId));
+
+		const userValuations = isAdmin
+			? await baseQuery.orderBy(desc(valuations.updatedAt))
+			: await baseQuery.where(eq(valuations.userId, user.id)).orderBy(desc(valuations.updatedAt));
 
 		return {
 			valuations: userValuations

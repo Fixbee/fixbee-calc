@@ -50,6 +50,13 @@
 			"when": 1772890000000,
 			"tag": "0006_refresh_phone_models_from_0603",
 			"breakpoints": true
+		},
+		{
+			"idx": 6,
+			"version": "7",
+			"when": 1774291900000,
+			"tag": "0007_rbac_admin_user_roles",
+			"breakpoints": true
 		}
 	]
 }

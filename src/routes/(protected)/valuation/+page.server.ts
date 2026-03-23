@@ -1,5 +1,5 @@
 import { closeDbClient, createDbClient } from '$lib/server/db/client';
-import { phoneModels, valuationHelpTips, valuations } from '$lib/server/db/schema';
+import { phoneModels, users, valuationHelpTips, valuations } from '$lib/server/db/schema';
 import { computeValuationGrade, getPriceForGrade } from '$lib/valuation/grading';
 import { valuationSubmissionSchema } from '$lib/valuation/schema';
 import { and, asc, eq, sql } from 'drizzle-orm';
@@ -140,6 +140,16 @@ export const actions: Actions = {
 		const { db, sql: clientSql } = createDbClient();
 
 		try {
+			const actorProfile = await db
+				.select({
+					role: users.role
+				})
+				.from(users)
+				.where(eq(users.id, user.id))
+				.limit(1)
+				.then((rows) => rows[0] ?? null);
+			const isAdmin = actorProfile?.role === 'admin';
+
 			const model = await db
 				.select({
 					id: phoneModels.id,
@@ -185,6 +195,14 @@ export const actions: Actions = {
 
 			let storedValuationId = valuationId;
 			if (valuationId) {
+				const updateWhere = isAdmin
+					? and(eq(valuations.id, valuationId), eq(valuations.status, 'abandoned'))
+					: and(
+							eq(valuations.id, valuationId),
+							eq(valuations.userId, user.id),
+							eq(valuations.status, 'abandoned')
+						);
+
 				const updatedValuation = await db
 					.update(valuations)
 					.set({
@@ -202,13 +220,7 @@ export const actions: Actions = {
 						status: parsedData.data.decision,
 						updatedAt: sql`now()`
 					})
-					.where(
-						and(
-							eq(valuations.id, valuationId),
-							eq(valuations.userId, user.id),
-							eq(valuations.status, 'abandoned')
-						)
-					)
+					.where(updateWhere)
 					.returning({
 						id: valuations.id
 					});

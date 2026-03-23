@@ -9,6 +9,7 @@ export type Database = {
 					email: string;
 					company_name: string | null;
 					avatar_url: string | null;
+					role: Database['public']['Enums']['app_role'];
 					created_at: string;
 					updated_at: string;
 				};
@@ -17,6 +18,7 @@ export type Database = {
 					email: string;
 					company_name?: string | null;
 					avatar_url?: string | null;
+					role?: Database['public']['Enums']['app_role'];
 					created_at?: string;
 					updated_at?: string;
 				};
@@ -25,6 +27,7 @@ export type Database = {
 					email?: string;
 					company_name?: string | null;
 					avatar_url?: string | null;
+					role?: Database['public']['Enums']['app_role'];
 					created_at?: string;
 					updated_at?: string;
 				};
@@ -127,6 +130,7 @@ export type Database = {
 		Views: Record<string, never>;
 		Functions: Record<string, never>;
 		Enums: {
+			app_role: 'admin' | 'user';
 			phone_cosmetic_condition: 'none' | 'light' | 'heavy';
 			valuation_grade: 'A' | 'B' | 'C' | 'D';
 			valuation_status: 'accepted' | 'rejected' | 'abandoned';

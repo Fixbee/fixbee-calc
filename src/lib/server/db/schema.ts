@@ -22,12 +22,14 @@ export const valuationStatusEnum = pgEnum('valuation_status', [
 	'rejected',
 	'abandoned'
 ]);
+export const appRoleEnum = pgEnum('app_role', ['admin', 'user']);
 
 export const users = pgTable('users', {
 	id: uuid('id').primaryKey().notNull(),
 	email: text('email').notNull(),
 	companyName: text('company_name'),
 	avatarUrl: text('avatar_url'),
+	role: appRoleEnum('role').notNull().default('user'),
 	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow()
 });
