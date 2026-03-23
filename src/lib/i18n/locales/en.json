@@ -88,6 +88,34 @@
 		"subtitle": "Overview of salon activity and devices sold to central.",
 		"weeklySectionTitle": "Weekly report",
 		"monthlySectionTitle": "Monthly report",
+		"overview": {
+			"title": "Key metrics",
+			"latestWeekPeriod": "Latest week",
+			"latestMonthPeriod": "Latest month",
+			"latestWeekValuations": "Valuations (latest week)",
+			"latestWeekAcceptanceRate": "Acceptance (latest week)",
+			"latestWeekActiveSalons": "Active salons (latest week)",
+			"latestMonthValuations": "Valuations (latest month)",
+			"latestMonthSold": "Sold to central (latest month)",
+			"latestMonthAcceptanceRate": "Acceptance (latest month)",
+			"latestMonthSellThroughRate": "Sell-through vs accepted (latest month)",
+			"latestMonthActiveSalons": "Active salons (latest month)"
+		},
+		"charts": {
+			"title": "Charts",
+			"weeklyTrend": "Weekly trend",
+			"monthlyTrend": "Monthly trend",
+			"statusBreakdown": "Valuation status mix",
+			"statusAccepted": "Accepted",
+			"statusRejected": "Rejected",
+			"statusAbandoned": "Abandoned",
+			"noData": "No chart data available."
+		},
+		"ranking": {
+			"title": "Salon ranking (latest month)",
+			"acceptanceRate": "Acceptance rate",
+			"sellThroughRate": "Sell-through rate"
+		},
 		"table": {
 			"salon": "Salon",
 			"period": "Period",

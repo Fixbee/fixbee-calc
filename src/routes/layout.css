@@ -43,12 +43,12 @@
 	--color-button-shadow-3: oklch(0 0 0 / 0.17);
 	--color-button-shadow-4: oklch(0 0 0 / 0.29);
 	--color-button-shadow-5: oklch(0 0 0 / 0.33);
-	--color-button-border-top: oklch(1 0 0 / 0.75);
+	--color-button-border-top: oklch(1 0 0 / 0.95);
 	--color-button-border-mid: oklch(0 0 0 / 0.25);
 	--color-button-border-low: oklch(0 0 0 / 0.25);
 	--color-button-border-bottom: oklch(1 0 0 / 0.35);
 
-	--color-button-secondary-background: oklch(0 0 0 / 0.1);
+	--color-button-secondary-background: oklch(0 0 0 / 0.075);
 	--color-button-secondary-background-hover: oklch(0 0 0 / 0.025);
 	--color-button-secondary-foreground: oklch(0.2 0 0 / 0.83);
 	--color-button-secondary-text-shadow: oklch(1 0 0 / 0.2);
@@ -57,7 +57,7 @@
 	--color-button-secondary-inner-stroke: oklch(1 0 0 / 0.03);
 	--color-button-secondary-outer-stroke: oklch(0 0 0 / 0.24);
 	--color-button-secondary-border-top: oklch(1 0 0 / 0.42);
-	--color-button-secondary-border-mid: oklch(0 0 0 / 0.2);
+	--color-button-secondary-border-mid: oklch(0 0 0 / 0.05);
 	--color-button-secondary-border-bottom: oklch(1 0 0 / 0.22);
 
 	--color-button-success-background: oklch(0.71 0.15 149 / 0.95);
@@ -73,7 +73,7 @@
 	--color-button-success-shadow-3: oklch(0 0 0 / 0.17);
 	--color-button-success-shadow-4: oklch(0 0 0 / 0.29);
 	--color-button-success-shadow-5: oklch(0 0 0 / 0.33);
-	--color-button-success-border-top: oklch(0.9 0 148 / 0.7);
+	--color-button-success-border-top: oklch(0.91 0.15 149);
 	--color-button-success-border-mid: oklch(0.41 0.1 148 / 0.4);
 	--color-button-success-border-low: oklch(0.35 0.1 148 / 0.35);
 	--color-button-success-border-bottom: oklch(1 0 0 / 0.35);

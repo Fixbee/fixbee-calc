@@ -88,6 +88,34 @@
 		"subtitle": "Zestawienie pracy salonów i sprzedaży telefonów do centrali.",
 		"weeklySectionTitle": "Raport tygodniowy",
 		"monthlySectionTitle": "Raport miesięczny",
+		"overview": {
+			"title": "Kluczowe wskaźniki",
+			"latestWeekPeriod": "Najnowszy tydzień",
+			"latestMonthPeriod": "Najnowszy miesiąc",
+			"latestWeekValuations": "Wyceny (ostatni tydzień)",
+			"latestWeekAcceptanceRate": "Akceptacja (ostatni tydzień)",
+			"latestWeekActiveSalons": "Aktywne salony (ostatni tydzień)",
+			"latestMonthValuations": "Wyceny (ostatni miesiąc)",
+			"latestMonthSold": "Sprzedane do centrali (ostatni miesiąc)",
+			"latestMonthAcceptanceRate": "Akceptacja (ostatni miesiąc)",
+			"latestMonthSellThroughRate": "Sprzedaż vs zaakceptowane (ostatni miesiąc)",
+			"latestMonthActiveSalons": "Aktywne salony (ostatni miesiąc)"
+		},
+		"charts": {
+			"title": "Wykresy",
+			"weeklyTrend": "Trend tygodniowy",
+			"monthlyTrend": "Trend miesięczny",
+			"statusBreakdown": "Struktura statusów wycen",
+			"statusAccepted": "Zaakceptowane",
+			"statusRejected": "Odrzucone",
+			"statusAbandoned": "Porzucone",
+			"noData": "Brak danych do wykresu."
+		},
+		"ranking": {
+			"title": "Ranking salonów (ostatni miesiąc)",
+			"acceptanceRate": "Wskaźnik akceptacji",
+			"sellThroughRate": "Wskaźnik sprzedaży"
+		},
 		"table": {
 			"salon": "Salon",
 			"period": "Okres",

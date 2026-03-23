@@ -25,7 +25,6 @@
 	.ui-card {
 		box-shadow:
 			inset 0 0 0 1px var(--color-card-shadow-inner),
-			0 0 0 1px var(--color-card-shadow-outline),
 			0 10px 28px -14px var(--color-card-shadow-drop);
 	}
 
