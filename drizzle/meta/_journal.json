@@ -78,6 +78,13 @@
 			"when": 1774301200000,
 			"tag": "0010_backend_instalment_discount",
 			"breakpoints": true
+		},
+		{
+			"idx": 10,
+			"version": "7",
+			"when": 1774302900000,
+			"tag": "0011_simplify_instalment_tip",
+			"breakpoints": true
 		}
 	]
 }
