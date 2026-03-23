@@ -57,6 +57,13 @@
 			"when": 1774291900000,
 			"tag": "0007_rbac_admin_user_roles",
 			"breakpoints": true
+		},
+		{
+			"idx": 7,
+			"version": "7",
+			"when": 1774296400000,
+			"tag": "0008_harden_auth_user_role_sync",
+			"breakpoints": true
 		}
 	]
 }
