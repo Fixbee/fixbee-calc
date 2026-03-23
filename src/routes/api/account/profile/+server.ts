@@ -50,14 +50,30 @@ const extractAvatarObjectPath = (avatarUrl: string | null) => {
 	}
 };
 
-const removeAvatarObject = async (objectPath: string | null) => {
+const getUserScopedAvatarObjectPath = (objectPath: string | null, userId: string) => {
 	if (!objectPath) {
+		return null;
+	}
+
+	const normalizedPath = objectPath.replace(/^\/+/, '');
+	const expectedPrefix = `${userId}/`;
+
+	if (!normalizedPath.startsWith(expectedPrefix)) {
+		return null;
+	}
+
+	return normalizedPath;
+};
+
+const removeAvatarObject = async (objectPath: string | null, userId: string) => {
+	const scopedObjectPath = getUserScopedAvatarObjectPath(objectPath, userId);
+	if (!scopedObjectPath) {
 		return;
 	}
 
 	try {
 		const supabaseAdmin = getSupabaseAdmin();
-		await supabaseAdmin.storage.from(AVATARS_BUCKET).remove([objectPath]);
+		await supabaseAdmin.storage.from(AVATARS_BUCKET).remove([scopedObjectPath]);
 	} catch {
 		// Avatar cleanup is best-effort and should not fail the main request flow.
 	}
@@ -171,7 +187,7 @@ export const POST: RequestHandler = async ({ locals, request }) => {
 		});
 
 		if (userUpdateError) {
-			await removeAvatarObject(uploadedAvatarObjectPath);
+			await removeAvatarObject(uploadedAvatarObjectPath, user.id);
 			return json({ message: 'errors.profileUpdateFailed' }, { status: 500 });
 		}
 
@@ -207,7 +223,7 @@ export const POST: RequestHandler = async ({ locals, request }) => {
 			if (uploadedAvatarObjectPath) {
 				const previousAvatarObjectPath = extractAvatarObjectPath(previousAvatarUrl);
 				if (previousAvatarObjectPath && previousAvatarObjectPath !== uploadedAvatarObjectPath) {
-					await removeAvatarObject(previousAvatarObjectPath);
+					await removeAvatarObject(previousAvatarObjectPath, user.id);
 				}
 			}
 
@@ -222,7 +238,7 @@ export const POST: RequestHandler = async ({ locals, request }) => {
 			await supabaseAdmin.auth.admin.updateUserById(user.id, {
 				user_metadata: previousMetadata
 			});
-			await removeAvatarObject(uploadedAvatarObjectPath);
+			await removeAvatarObject(uploadedAvatarObjectPath, user.id);
 			return json({ message: 'errors.profileUpdateFailed' }, { status: 500 });
 		}
 	} finally {
