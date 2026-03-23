@@ -104,7 +104,8 @@
 			"colorPlaceholder": "e.g. Black",
 			"imei": "IMEI number",
 			"imeiPlaceholder": "15 digits",
-			"imeiUnreadable": "IMEI number is unreadable"
+			"imeiUnreadable": "IMEI number is unreadable",
+			"instalmentPhone": "Instalment phone"
 		},
 		"questions": {
 			"powerOn": "Does the phone power on and display an image?",

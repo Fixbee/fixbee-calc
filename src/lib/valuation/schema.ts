@@ -37,7 +37,8 @@ const valuationDetailsBaseSchema = z.object({
 		.string()
 		.trim()
 		.max(64, 'errors.imeiTooLong')
-		.transform((value) => normalizeImei(value))
+		.transform((value) => normalizeImei(value)),
+	isInstalmentPhone: z.boolean()
 });
 
 export const valuationDetailsSchema = valuationDetailsBaseSchema.superRefine((value, context) => {

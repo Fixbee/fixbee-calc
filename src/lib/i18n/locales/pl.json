@@ -104,7 +104,8 @@
 			"colorPlaceholder": "np. Czarny",
 			"imei": "Numer IMEI",
 			"imeiPlaceholder": "15 cyfr",
-			"imeiUnreadable": "Numer IMEI jest nieczytelny"
+			"imeiUnreadable": "Numer IMEI jest nieczytelny",
+			"instalmentPhone": "Telefon ratalny"
 		},
 		"questions": {
 			"powerOn": "Czy telefon się włącza i wyświetla obraz?",

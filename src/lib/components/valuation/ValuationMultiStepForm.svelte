@@ -13,6 +13,7 @@
 	import PhoneModelCombobox from '$lib/components/valuation/PhoneModelCombobox.svelte';
 	import { getNormalizedLocale } from '$lib/i18n';
 	import {
+		applyInstalmentDiscount,
 		computeValuationGrade,
 		getPriceForGrade,
 		type CosmeticCondition,
@@ -56,6 +57,7 @@
 		phoneColor: string;
 		imeiUnreadable: boolean;
 		imei: string;
+		isInstalmentPhone: boolean;
 		questionPowerOn: YesNoAnswer;
 		questionHasLock: YesNoAnswer;
 		questionHasVisibleDamage: YesNoAnswer;
@@ -192,6 +194,7 @@
 	let phoneColor = $state('');
 	let imei = $state('');
 	let imeiUnreadable = $state(false);
+	let isInstalmentPhone = $state(false);
 
 	let questionPowerOn = $state<YesNoAnswer | null>(null);
 	let questionHasLock = $state<YesNoAnswer | null>(null);
@@ -235,7 +238,7 @@
 	});
 	const activeTipSlugs = $derived.by(() => {
 		if (currentStep === 0) {
-			return ['imei', 'model'];
+			return ['imei', 'model', 'instalment-phone'];
 		}
 		if (currentStep > 0 && currentStep <= questionDefinitions.length) {
 			return [`question-${currentStep}`];
@@ -435,7 +438,7 @@
 			return null;
 		}
 
-		return getPriceForGrade(
+		const basePrice = getPriceForGrade(
 			selectedModel.basePrice,
 			{
 				A: selectedModel.gradeAPercent,
@@ -445,6 +448,7 @@
 			},
 			calculatedGrade
 		);
+		return applyInstalmentDiscount(basePrice, isInstalmentPhone);
 	});
 
 	const suggestedBuybackPrice = $derived.by(() => {
@@ -539,6 +543,7 @@
 		phoneColor = '';
 		imei = '';
 		imeiUnreadable = false;
+		isInstalmentPhone = false;
 		questionPowerOn = null;
 		questionHasLock = null;
 		questionHasVisibleDamage = null;
@@ -557,7 +562,8 @@
 			phoneModelId: selectedModelId ?? 0,
 			phoneColor,
 			imeiUnreadable,
-			imei
+			imei,
+			isInstalmentPhone
 		});
 
 		if (!parsedDetails.success) {
@@ -594,6 +600,7 @@
 			phoneColor,
 			imeiUnreadable,
 			imei,
+			isInstalmentPhone,
 			questionPowerOn,
 			questionHasLock,
 			questionHasVisibleDamage,
@@ -680,6 +687,10 @@
 		if (imeiUnreadable) {
 			imei = '';
 		}
+	};
+
+	const toggleInstalmentPhone = (event: Event) => {
+		isInstalmentPhone = (event.currentTarget as HTMLInputElement).checked;
 	};
 
 	const submitEnhance: SubmitFunction = ({ formData }) => {
@@ -908,9 +919,14 @@
 												? 'border-destructive/70 focus-visible:ring-destructive/55'
 												: ''}
 										/>
-										<Checkbox checked={imeiUnreadable} onchange={toggleImeiUnreadable}>
-											{$t('valuation.details.imeiUnreadable')}
-										</Checkbox>
+										<div class="flex flex-col gap-2">
+											<Checkbox checked={imeiUnreadable} onchange={toggleImeiUnreadable}>
+												{$t('valuation.details.imeiUnreadable')}
+											</Checkbox>
+											<Checkbox checked={isInstalmentPhone} onchange={toggleInstalmentPhone}>
+												{$t('valuation.details.instalmentPhone')}
+											</Checkbox>
+										</div>
 										{#if detailFieldErrors.imei}
 											<p class="text-xs text-destructive">
 												{$t(detailFieldErrors.imei)}
@@ -1092,6 +1108,7 @@
 						<input type="hidden" name="phoneColor" value={phoneColor} />
 						<input type="hidden" name="imeiUnreadable" value={String(imeiUnreadable)} />
 						<input type="hidden" name="imei" value={imei} />
+						<input type="hidden" name="isInstalmentPhone" value={String(isInstalmentPhone)} />
 						<input type="hidden" name="questionPowerOn" value={questionPowerOn ?? ''} />
 						<input type="hidden" name="questionHasLock" value={questionHasLock ?? ''} />
 						<input

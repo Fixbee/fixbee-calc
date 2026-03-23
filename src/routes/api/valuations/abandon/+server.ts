@@ -1,7 +1,11 @@
 import { json } from '@sveltejs/kit';
 import { closeDbClient, createDbClient } from '$lib/server/db/client';
 import { phoneModels, valuations } from '$lib/server/db/schema';
-import { computeValuationGrade, getPriceForGrade } from '$lib/valuation/grading';
+import {
+	applyInstalmentDiscount,
+	computeValuationGrade,
+	getPriceForGrade
+} from '$lib/valuation/grading';
 import { valuationSubmissionSchema } from '$lib/valuation/schema';
 import { eq } from 'drizzle-orm';
 import type { RequestHandler } from './$types';
@@ -11,6 +15,7 @@ type ValuationAbandonPayload = {
 	phoneColor: string;
 	imeiUnreadable: boolean;
 	imei: string;
+	isInstalmentPhone: boolean;
 	questionPowerOn: 'yes' | 'no';
 	questionHasLock: 'yes' | 'no';
 	questionHasVisibleDamage: 'yes' | 'no';
@@ -85,7 +90,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 			cosmeticCondition: parsedData.data.questionCosmeticCondition
 		};
 		const grade = computeValuationGrade(answers);
-		const proposedPrice = getPriceForGrade(
+		const baseProposedPrice = getPriceForGrade(
 			model.basePrice,
 			{
 				A: model.gradeAPercent,
@@ -94,6 +99,10 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 				D: model.gradeDPercent
 			},
 			grade
+		);
+		const proposedPrice = applyInstalmentDiscount(
+			baseProposedPrice,
+			parsedData.data.isInstalmentPhone
 		);
 
 		const insertedValuation = await db

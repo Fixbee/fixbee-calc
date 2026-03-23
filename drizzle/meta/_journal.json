@@ -64,6 +64,13 @@
 			"when": 1774296400000,
 			"tag": "0008_harden_auth_user_role_sync",
 			"breakpoints": true
+		},
+		{
+			"idx": 8,
+			"version": "7",
+			"when": 1774299400000,
+			"tag": "0009_add_instalment_phone_tip",
+			"breakpoints": true
 		}
 	]
 }

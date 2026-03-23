@@ -1,6 +1,10 @@
 import { closeDbClient, createDbClient } from '$lib/server/db/client';
 import { phoneModels, users, valuationHelpTips, valuations } from '$lib/server/db/schema';
-import { computeValuationGrade, getPriceForGrade } from '$lib/valuation/grading';
+import {
+	applyInstalmentDiscount,
+	computeValuationGrade,
+	getPriceForGrade
+} from '$lib/valuation/grading';
 import { valuationSubmissionSchema } from '$lib/valuation/schema';
 import { and, asc, eq, sql } from 'drizzle-orm';
 import { fail } from '@sveltejs/kit';
@@ -116,6 +120,7 @@ export const actions: Actions = {
 			phoneColor: String(formData.get('phoneColor') ?? ''),
 			imeiUnreadable: String(formData.get('imeiUnreadable') ?? 'false') === 'true',
 			imei: String(formData.get('imei') ?? ''),
+			isInstalmentPhone: String(formData.get('isInstalmentPhone') ?? 'false') === 'true',
 			questionPowerOn: String(formData.get('questionPowerOn') ?? ''),
 			questionHasLock: String(formData.get('questionHasLock') ?? ''),
 			questionHasVisibleDamage: String(formData.get('questionHasVisibleDamage') ?? ''),
@@ -182,7 +187,7 @@ export const actions: Actions = {
 				cosmeticCondition: parsedData.data.questionCosmeticCondition
 			};
 			const grade = computeValuationGrade(answers);
-			const proposedPrice = getPriceForGrade(
+			const baseProposedPrice = getPriceForGrade(
 				model.basePrice,
 				{
 					A: model.gradeAPercent,
@@ -191,6 +196,10 @@ export const actions: Actions = {
 					D: model.gradeDPercent
 				},
 				grade
+			);
+			const proposedPrice = applyInstalmentDiscount(
+				baseProposedPrice,
+				parsedData.data.isInstalmentPhone
 			);
 
 			let storedValuationId = valuationId;
